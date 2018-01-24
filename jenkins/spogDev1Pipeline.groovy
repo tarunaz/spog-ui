@@ -1,9 +1,5 @@
 @Library('pengg-openshift-pipelines') _
 
-MICROSERVICE = 'tarun-spog';
-GIT_SRC_REPOSITORY_REF = 'master';
-OCP_BUILD_NAMESPACE = 'master';
-
 node('nodejs') {
 	
 	stage('Checkout OCP templates') {
@@ -16,8 +12,8 @@ node('nodejs') {
 	   echo 'Process OpenShift Build templates'
            processOcpBuildTemplates {
 	       gitRepoUrl = "git@github.com:tarunaz/spog-ui.git"
-	       microservice = MICROSERVICE
-	       sourceRepositoryRef = GIT_SRC_REPOSITORY_REF
+	       microservice = "tarun-spog"
+	       sourceRepositoryRef = "master"
 	       gitPullSecret = "tarun-spog-master"
 	       buildNamespace = "nss"
 	       deployNamespace ="tarun-spog1"
@@ -31,7 +27,7 @@ node('nodejs') {
 	   echo 'Start OpenShift build'
            startOcpBuild {
 	      namespace = "nss"
-	      buildConfigName = MICROSERVICE + '-' + GIT_SRC_REPOSITORY_REF
+	      buildConfigName = "tarun-spog-master"
 	   }
 	   
 	}
