@@ -1,7 +1,5 @@
 @Library('pengg-openshift-pipelines') _
 
-import com.netapp.Constants
-
 node('nodejs') {
 	
 	stage('Checkout OCP templates') {
@@ -29,7 +27,6 @@ node('nodejs') {
 	   echo 'Start OpenShift build'
            startOcpBuild {
 	      namespace = "nss"
-	      buildConfigName = Constants.MICROSERVICE-Constants.GIT_SRC_REPOSITORY_REF
 	   }
 	   
 	}
