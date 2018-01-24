@@ -4,14 +4,14 @@ node('nodejs') {
 
 	def config = [
 	       microservice: "tarun-spog",
-	       version = "1.7",
+	       version: "1.7",
 	       gitRepoUrl: "git@github.com:tarunaz/spog-ui.git",
 	       sourceRepositoryRef: "master",
 	       gitPullSecret: "tarun-spog-master",
 	       buildNamespace: "nss",
 	       deployNamespace: "tarun-spog1",
 	       emailAddress: "test@example.com",
-               ocpUrl = "https://tpaas-console.netapp.com:8443"
+               ocpUrl: "https://tpaas-console.netapp.com:8443"
 	]
 	
 	stage('Checkout OCP templates') {
