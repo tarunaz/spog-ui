@@ -1,0 +1,132 @@
+
+
+
+<div class="search-results"
+         infinite-scroll
+         [infiniteScrollDistance]="2"
+         [infiniteScrollThrottle]="10"
+         (scrolled)="onScrollDown()">
+        
+<div class="n-compact-data-table-container">
+    <div class="wrapper"  >
+			
+        <div class="dropdown">
+  <button (click)="myFunction()" class="add-icon dropbtn">+</button>
+    <div id="myDropdown" class="dropdown-content myDropdown">
+        
+      <!-- <div class="checkbox" >
+        <label  *ngFor="let col of (metaData)">
+           <input type="checkbox" name="" value="">
+           <i class="helper"></i>Checkbox
+        </label>
+      </div> -->
+      <div  *ngFor="let col of (metaData)" class="checkbox">
+          <input type="checkbox"[checked]="col.display" name="col.columnName"  (change)="titleboxArray[col.columnName] = $event.target.checked; checkTitle(col);"  class="input-checkbox chx"  />
+          <span> {{getColumnName(col)}}</span>
+       
+      </div>
+      
+    </div>  
+  </div>       
+        <div class="table-responsive">
+            <virtual-scroll #scroll [items]="records"  [parentScroll]="scroll.window" (change)="onListChange($event)" (update)="scrollItems  = $event">
+
+          <table class="table table-bordered table-striped"  *ngIf="!isError()">
+            <thead>
+               <tr>
+                <th  *ngFor="let col of (metaData)"  [hidden]="!col.display" (click)="sortOrder(col)" [style.width.px]="getColumnWidth(col)"  [ngClass]="col.class"> 
+                  {{getColumnName(col)}} 
+                </th>
+               </tr>
+            </thead>       
+            <thead class="subheader">
+               <tr>
+                <th *ngFor="let col of metaData; let i = index"  [hidden]="!col.display"><input type="text" placeholder="Search"[hidden]="!col.searchFilter" name="col.columnName" [(ngModel)]="filter[col.columnName]" (click)="textClick()" (keyup)="filterData(filter)" /></th>
+        
+               </tr>
+            </thead>			
+            <tbody>
+                    <tr *ngFor="let record of records | bookfilter:filterSearch; let i = index">
+                        <td *ngFor="let col of metaData"  [hidden]="!col.display" >
+                           
+                            <div *ngIf="col.columnName != 'autosupportstatus' && col.columnName != 'productToolSet'">{{getLinkValue(record, col, 'text')}}</div>
+                            <div *ngIf="col.columnName == 'autosupportstatus'"> 
+                              <div *ngIf="record.autoSupport.onOff==true"> ON </div>
+                              <div *ngIf="record.autoSupport.onOff==false"> OFF </div>
+                                | 
+                                <a href="#" *ngIf="record.autoSupport.viewOrAction==true">[view]</a>
+                                <a href="#" *ngIf="record.autoSupport.viewOrAction==false">[Action]</a>
+                              </div>
+                            <div *ngIf="col.columnName == 'productToolSet'"> 
+                              <button class="dropdowns" type="button" (click)="manageDetailsDropdown(i)">
+                                <label *ngIf="selectedDropdownArray[i]">{{selectedDropdownArray[i]}}</label>
+                                <label *ngIf="!selectedDropdownArray[i]">Manage Details</label>
+                                <span>&#9662;</span>
+                              </button>	
+                              
+                                <ul class="dropdown-contents" [style.display]="manageDetailsDropdownArray[i]==true?'block':'none'">
+                                  
+                                 <li *ngFor="let drop of record['productToolSet']" (click)="FnselectedDropdown(i, drop.label )">
+                                    {{drop.label}}
+                                 </li>
+                                </ul>
+                            </div>
+                        </td>
+                         
+                     
+                      </tr>
+                      <!-- <tr *ngFor="let record of records | bookfilter:filterSearch;">
+                          <td colspan="metaData.length-1"> No Record Found</td>
+                        </tr> -->
+               
+                
+              
+
+
+                             
+            </tbody>
+          </table>
+        </virtual-scroll>
+        </div>
+      </div>	
+  <!-- <table class="n-compact-data-table" *ngIf="!isError()">
+    <thead>
+      <tr>
+        <th *ngFor="let col of (metaData)"  [hidden]="!col.display" (click)="sortOrder(col)" [style.width.px]="getColumnWidth(col)"  [ngClass]="col.class">
+            {{getColumnName(col)}}
+        </th>
+        <th> plus</th>
+      </tr>
+      <tr>
+        <th *ngFor="let col of metaData; let i = index"  [hidden]="!col.display">
+            <input type="text" placeholder="Search..." [hidden]="!col.searchFilter" name="col.columnName" [(ngModel)]="filter[col.columnName]" (keyup)="filterData(col.columnName, searchData[i])">
+        </th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let record of records | slice:(page-1)*limit:page*limit"  >
+        <td *ngFor="let col of metaData"  [hidden]="!col.display"> 
+          {{getLinkValue(record, col, 'text')}}
+        </td>
+      </tr>
+    </tbody>
+
+  </table> -->
+
+  <div #errElement>  
+     <div  class="n-widget__notification n-widget__notification--error" *ngIf="isError()">
+      <div class="error-block">
+        <div><svg class="n-icon-triangle-info n-icon n-icon--medium" aria-labelledby="title">
+         <title>triangle-info</title>
+         <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="assets/svg/sprite.svg#triangle-info"></use>
+         </svg>
+        </div>
+        <p class="errorMsg"></p>
+      </div>
+        {{getErrorMsg()}}
+    </div>
+  </div>
+  
+</div>
+</div>

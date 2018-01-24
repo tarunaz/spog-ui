@@ -1,0 +1,84 @@
+<div id="mobile-content" *ngIf="performancedata">
+    <div>
+        <div class="n-widget__heading n-font-bold">
+            <h6>Performance</h6>
+            <p>[Definition of Performance goes here and it’s this long.]</p>
+        </div>
+
+        <div class="n-chart">
+            <div class="n-chart__cell leftmargin-60">
+                <donut-chart id="capacitychart" [chartdata]="performancedata.chartData" [chartlabels]="performancedata.chartLabels" [chartcolors]="performancedata.chartColors"
+                    [chartname]="performancedata.chartName"></donut-chart>
+            </div>
+
+            <div class="n-chart__cell leftmargin-80">
+                <div class="n-chart__legend">
+                    <div class="n-chart__legend-label">
+                        ONTAP Systems
+                    </div>
+
+                    <div class="n-chart__legend-stat-list">
+                        <div class="n-chart__stat-table">
+                            <ul class="n-chart__stat-row">
+                                <li class="n-chart__stat-cell n-chart__stat-cell--key">
+                                    <span class="n-chart__key n-chart__key--error"></span>
+                                </li>
+                                <li class="n-chart__stat-cell n-chart__stat-cell--number">
+                                    <a href="#">{{performancedata.highperformance}}</a>
+                                </li>
+                                <li class="n-chart__stat-cell">
+                                    <span class="n-chart__note">with HIGH CPU / Drive utilization</span>
+                                </li>
+                            </ul>
+
+                            <ul class="n-chart__stat-row">
+                                <li class="n-chart__stat-cell n-chart__stat-cell--key">
+                                    <span class="n-chart__key n-chart__key--caution-2"></span>
+                                </li>
+                                <li class="n-chart__stat-cell n-chart__stat-cell--number">
+                                    <a href="#">{{performancedata.lessperformance}}</a>
+                                </li>
+                                <li class="n-chart__stat-cell">
+                                    <span class="n-chart__note">with less than 20% Headroom</span>
+                                </li>
+                            </ul>
+
+                            <ul class="n-chart__stat-row">
+                                <li class="n-chart__stat-cell n-chart__stat-cell--key">
+                                    <span class="n-chart__key n-chart__key--success"></span>
+                                </li>
+                                <li class="n-chart__stat-cell n-chart__stat-cell--number">
+                                    <a href="#">{{performancedata.workingperformance}}</a>
+                                </li>
+                                <li class="n-chart__stat-cell">
+                                    <span class="n-chart__note">working efficiently</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+
+        <!-- moredetails link comes here -->
+        <app-nav-moredetail [linktext]="performancedata.bottomlinktext" [linkurl]="performancedata.bottomlinkurl"></app-nav-moredetail>
+
+
+    </div>
+
+</div>
+
+<div *ngIf="!performancedata" class="minwidgethight">
+    <div class="loader loader--style3" title="2">
+        <svg version="1.1" id="loader-1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+            width="100px" height="100px" viewBox="0 0 50 50" style="enable-background:new 0 0 50 50;" xml:space="preserve">
+            <path fill="#000" d="M43.935,25.145c0-10.318-8.364-18.683-18.683-18.683c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615c8.072,0,14.615,6.543,14.615,14.615H43.935z">
+                <animateTransform attributeType="xml" attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="0.6s" repeatCount="indefinite"
+                />
+            </path>
+        </svg>
+    </div>
+</div>

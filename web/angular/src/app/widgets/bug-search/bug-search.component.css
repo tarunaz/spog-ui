@@ -1,0 +1,14 @@
+.bug-search h4{
+    font-family: 'Gotham SSm A','Gotham SSm B',Helvetica,Arial,sans-serif;
+    font-weight: 300;
+    font-style: normal;
+    font-size: 24px;
+    line-height: 1.5;
+}
+.bug-search h6{
+    font-family: 'Gotham Narrow SSm A','Gotham Narrow SSm B',Helvetica,Arial,sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 18px;
+    margin-bottom: 24px;
+}

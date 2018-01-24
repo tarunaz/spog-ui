@@ -1,0 +1,40 @@
+<div class="n-widget__content">
+
+  <div class="n-widget__title n-widget__row n-widget__row--valign-center n-widget__row--nowrap">
+    <h4 class="n-widget__col n-widget__title-heading" id="contracts_heading">{{get("contracts_heading")}}</h4>
+    <div class="n-widget__col n-widget__col-icon">
+      <svg aria-labelledby="title" class="n-icon-arrows n-icon n-icon--default n-widget__icon-move">
+        <title>move</title>
+        <use xlink:href="assets/svg/sprite.svg#arrows" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
+      </svg>
+    </div>
+  </div>
+
+  <div class="n-widget__heading" id="contracts_mostrecent">
+    <h6>{{get("contracts_mostrecent")}}</h6>
+  </div>
+  <div *ngIf="!contractsdata" class="minwidgethight">
+    <div class="loader loader--style3" title="2">
+      <svg version="1.1" id="loader-1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+        width="100px" height="100px" viewBox="0 0 50 50" style="enable-background:new 0 0 50 50;" xml:space="preserve">
+        <path fill="#000" d="M43.935,25.145c0-10.318-8.364-18.683-18.683-18.683c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615c8.072,0,14.615,6.543,14.615,14.615H43.935z">
+          <animateTransform attributeType="xml" attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="0.6s" repeatCount="indefinite"
+          />
+        </path>
+      </svg>
+    </div>
+  </div>
+  <div *ngIf="contractsdata">
+    <app-spog-grid [metaData]='response.metaData' [records]='contractsdata' [error]='response.error'></app-spog-grid>
+  </div>
+  <section class="n-widget__row n-widget__row--valign-center">
+    <div class="n-widget__col n-widget__col-1-2">
+      <a class="n-widget__link-all" id="contracts_allcontractsandwarranties">{{get("contracts_allcontractsandwarranties")}}
+        <svg class="n-icon-arrow-circle-o-right n-icon n-icon--default" aria-labelledby="title">
+          <title>arrow-circle-o-right</title>
+          <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="assets/svg/sprite.svg#arrow-circle-o-right"></use>
+        </svg>
+      </a>
+    </div>
+  </section>
+</div>

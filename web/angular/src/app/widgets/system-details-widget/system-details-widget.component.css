@@ -1,0 +1,24 @@
+
+  dl.n-statistic{
+    position: relative;
+    bottom: 56px;
+    left: 10px;
+  }
+
+.right-side-icons-area
+  {
+    position: absolute;
+    right: 14px;
+  }
+
+  .right-side-icons-area .messages-icon{
+    height: 25px;
+    position: relative;
+    right: 9pt;
+    top:10pt;
+  }
+  .right-side-icons-area .download-icon{
+    height: 25px;
+    position: relative;
+    top:10pt;
+  }

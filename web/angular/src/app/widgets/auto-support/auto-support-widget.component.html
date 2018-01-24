@@ -1,0 +1,62 @@
+<div class="n-widget__content">
+    <div class="n-widget__title">
+        <div class="n-widget__row n-widget__row--valign-center n-widget__row--nowrap">
+
+            <div class="n-widget__col">
+                <h4 class="n-widget__title-heading" id="actiq_heading">{{get("actiq_heading")}}</h4>
+            </div>
+
+            <div class="n-widget__col n-widget__col-icon">
+                <button class="button button--clean">
+                    <svg class="n-icon-legend-downloadable n-icon n-icon--default" aria-labelledby="title">
+                        <title>legend-downloadable</title>
+                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="assets/svg/sprite.svg#legend-downloadable"></use>
+                    </svg>
+                </button>
+            </div>
+            <div class="n-widget__col n-widget__col-icon">
+                <svg aria-labelledby="title" class="n-icon-arrows n-icon n-icon--default n-widget__icon-move">
+                    <title>arrows</title>
+                    <use xlink:href="assets/svg/sprite.svg#arrows" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
+                </svg>
+            </div>
+
+        </div>
+    </div>
+
+    <app-widget-header *ngIf="activeiqdata" [roottitle]="activeiqdata.roottitle" [subtitle]="activeiqdata.subtitle"></app-widget-header>
+
+    <div *ngIf="activeiqdata" class="n-compact-tabs js-object-compact-tabs">
+        <!-- System Inventory tabs render here -->
+        <app-tab [tabs]="tab"></app-tab>
+
+    </div>
+
+    <!--<div *ngIf="nodata">
+
+        <div class="n-widget__notification n-widget__notification--error">
+            <div class="error-block">
+
+                <svg class="n-icon-triangle-info n-icon n-icon--medium" aria-labelledby="title">
+                    <title>triangle-info</title>
+                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="assets/svg/sprite.svg#triangle-info"></use>
+                </svg>
+                Some data is currently unavailable due to technical issues.
+            </div>
+        </div>
+
+        <app-nav-moredetail [linktext]="nodata.bottomtext" [linkurl]="nodata.bottomlink"></app-nav-moredetail>
+    </div>-->
+
+    <div *ngIf="!activeiqdata ">
+        <div class="loader loader--style3" title="2">
+            <svg version="1.1" id="loader-1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                width="100px" height="100px" viewBox="0 0 50 50" style="enable-background:new 0 0 50 50;" xml:space="preserve">
+                <path fill="#000" d="M43.935,25.145c0-10.318-8.364-18.683-18.683-18.683c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615c8.072,0,14.615,6.543,14.615,14.615H43.935z">
+                    <animateTransform attributeType="xml" attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="0.6s" repeatCount="indefinite"
+                    />
+                </path>
+            </svg>
+        </div>
+    </div>
+</div>

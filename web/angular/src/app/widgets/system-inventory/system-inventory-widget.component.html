@@ -1,0 +1,75 @@
+<div class="n-widget__content">
+    <div class="n-widget__title">
+        <div class="n-widget__row n-widget__row--valign-center n-widget__row--nowrap">
+
+                <div class="n-widget__col">
+                        <h4 class="n-widget__title-heading" id = "sys">System Inventory</h4>
+                </div>
+
+                <div class="n-widget__col n-widget__col-icon">
+                        <button class="button button--clean">
+                            <svg class="n-icon-legend-downloadable n-icon n-icon--default" aria-labelledby="title">
+                                <title>legend-downloadable</title>
+                                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="assets/svg/sprite.svg#legend-downloadable"></use>
+                            </svg>
+                        </button>
+                </div>
+
+                <div class="n-widget__col n-widget__col-icon">
+                        <button class="button button--clean js-behavior-show-search-input">
+                            <svg class="n-icon-search n-icon n-icon--default" aria-labelledby="title">
+                                <title>search</title>
+                                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="assets/svg/sprite.svg#search"></use>
+                            </svg>
+                        </button>
+                </div>
+                <div class="n-widget__col n-widget__col-icon">
+                        <svg class="n-icon-arrows n-icon n-icon--default n-widget__icon-move" aria-labelledby="title">
+                            <title>arrows</title>
+                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="assets/svg/sprite.svg#autosupport"></use>
+                        </svg>
+                </div>
+
+        </div>
+    </div>
+    <dl class="n-statistic">
+            <dt class="n-statistic__term">
+                <a href="https://invis.io/FRC1TOETM#/246720180_Unfiltered_Systems_Table_-XL-_1394p-_Copy">425</a>
+            </dt>
+            <dd class="n-statistic__definition" id = "total">
+                Total Systems
+                <span class="n-tooltip js-behavior-toggle-tooltip">
+                    <span class="n-tooltip__content">
+                        Reporting on 425 Total Systems
+                    </span>
+                    <button class="button button--clean">
+                        <svg class="n-icon-question-circle n-icon n-icon--default" aria-labelledby="title">
+                            <title>question-circle</title>
+                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="assets/svg/sprite.svg#circle-check"></use>
+                        </svg>
+                    </button>
+                </span>
+            </dd>
+        </dl>
+
+
+        <!-- <div class="n-compact-tabs js-object-compact-tabs">
+          
+          <app-spogtab [tabheaders]="localtabheaderslist" [tabcontrolcontainerId]="tabcontrolcontainerId" ></app-spogtab>                      
+                  
+        </div>
+
+        
+        <app-nav-moredetail [linktext]="bottomlinktext" [linkurl]="bottomlinkurl" ></app-nav-moredetail> -->
+
+        <!-- <app-widget-header  [roottitle]="localroottitle" [subtitle]="localsubtitle" ></app-widget-header> -->
+        
+            <div class="n-compact-tabs js-object-compact-tabs">
+                <!-- System Inventory tabs render here -->
+                <app-tab [tabs]= "tab"></app-tab>            
+                
+              </div>
+        
+        <app-nav-moredetail [linktext]="bottomlinktext" [linkurl]="bottomlinkurl" ></app-nav-moredetail>
+
+</div>

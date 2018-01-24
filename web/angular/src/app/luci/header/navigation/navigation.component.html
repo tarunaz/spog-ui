@@ -1,0 +1,71 @@
+<div class="n-property-navigation-bar">
+  <nav class="n-property-navigation-bar__nav">
+    <div class="n-container">
+      <ul class="n-property-navigation-bar__nav-list list-menu" #liElementMenu>
+        <!-- {{ data.NAVPARENT.PURL }} -->
+        <li class="n-property-navigation-bar__nav-list-item" *ngFor="let data of firstLevelNav; let ind=index" (click)="showDropMenu(data,ind,$event,showMenu);"
+          [ngClass]="{'n-property-navigation-bar__nav-link--is-active':(showMenu == ind && toggleDiv)}">
+          <a class="n-property-navigation-bar__nav-link" href="{{ data.NAVPARENT.PURL }}">
+            <span class="n-property-navigation-bar__nav-link-text" innerHTML="{{ data.NAVPARENT.PDISPNAME }}"></span>
+            <svg *ngIf="data.NAVPARENT.PPAGENAME !== 'myhome'" class="n-icon-chevron-down n-property-navigation-bar__menu-indicator"
+              aria-labelledby="title">
+              <title>chevron-down</title>
+              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="assets/svg/sprite.svg#chevron-down"></use>
+            </svg>
+          </a>
+          <ul class="dropdown-menu" *ngIf="(showMenu == ind && toggleDiv) && data.NAVPARENT.PPAGENAME !== 'myhome'">
+            <li *ngFor="let row of groupedArr; let ind=index" class="has-children pullLeftDiv n-menu__list-section">
+              <div *ngFor="let subchild of row">
+                <a innerHTML="{{subchild.CTITLE}}" href="{{subchild.CURL}}" class="n-menu__link"></a>
+                <ul *ngIf="subchild.NAX_NOWNAVBAR.NAVSUBCHILD" class="n-menu__list n-type_custom-3rd-menu">
+                  <div *ngIf="subchild.NAX_NOWNAVBAR.NAVSUBCHILD.length > 0">
+                    <li *ngFor="let child of subchild.NAX_NOWNAVBAR.NAVSUBCHILD">
+                      <a class="n-menu__link fnt14" href="{{child.SCURL}}" innerHTML="{{child.SCDISPNAME}}"></a>
+                    </li>
+                  </div>
+                  <div *ngIf="!subchild.NAX_NOWNAVBAR.NAVSUBCHILD.length">
+                    <a href="{{subchild.NAX_NOWNAVBAR.NAVSUBCHILD.SCURL}}" class="n-menu__link fnt14" innerHTML="{{subchild.NAX_NOWNAVBAR.NAVSUBCHILD.SCDISPNAME}}"></a>
+                  </div>
+                </ul>
+              </div>
+            </li>
+          </ul>
+        </li>
+        <li id="n-property-navigation-bar__menu--more-menu" class="n-property-navigation-bar__nav-list-item n-property-navigation-bar__more-item"
+          (click)="moreMenuItem(menuItem,$event);" [ngClass]="{'n-property-navigation-bar__nav-link--is-active':moreMenu}">
+          <a class="n-property-navigation-bar__nav-link n-property-navigation-bar__more-link" data-menu-id="more-menu">
+            <span class="n-property-navigation-bar__nav-link-text n-property-navigation-bar__more-link-text">More</span>
+            <svg class="n-icon-chevron-down n-property-navigation-bar__menu-indicator" aria-labelledby="title">
+              <title>chevron-down</title>
+              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/svg/sprite.svg#chevron-down"></use>
+            </svg>
+          </a>
+          <ul class="dropdown-menu dropdown_menuMore" *ngIf="moreMenu">
+            <li class="has-children" *ngFor="let child of MoreRow; let ind=index">
+              <a href="{{child.NAVPARENT.PURL}}" class="n-menu__link" innerHTML="{{child.NAVPARENT.PDISPNAME}}"></a>
+              <ul *ngIf="child.NAVPARENT.NAX_NOWNAVBAR.NAVCHILD" class="n-type__more-menu">
+                <li *ngFor="let subchild of child.NAVPARENT.NAX_NOWNAVBAR.NAVCHILD">
+                  <a href="{{subchild.CURL}}" class="n-menu__link fnt14" innerHTML="{{subchild.CDISPNAME}}"></a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <div class="n-property-navigation-bar__utils">
+        <ul class="n-property-navigation-bar__utils-list">
+          <li class="n-property-navigation-bar__utils-list-item">
+            <a href="/cssportal/faces/jsp/globalChat.jsp" target="_blank" class="n-property-navigation-bar__utils-link n-property-navigation-bar__utils-link--secondary js-behavior-toggle-chat">
+              <svg class="n-icon-comment n-icon" aria-labelledby="title">
+                <title>comment</title>
+                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="assets/svg/sprite.svg#comment"></use>
+              </svg>
+              <span class="n-property-navigation-bar__utils-link-text">Chat</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+ </div>
+ 

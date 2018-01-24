@@ -1,0 +1,36 @@
+:host ::ng-deep .search-highlight{   
+  font-weight: bold;
+}
+
+
+@keyframes spinner {
+	to {transform: rotate(360deg);}
+  }
+   
+  .spinner:before {
+	content: '';
+	box-sizing: border-box;
+	position: absolute;
+	top: 50%;
+	right: 7%;
+	width: 23px;
+	height: 23px;
+	margin-top: -10px;
+	margin-left: -10px;
+	border-radius: 50%;
+	border: 2px solid #ccc;
+	border-top-color: #0067c5;
+	animation: spinner .6s linear infinite;
+	z-index: 100;
+	}
+
+.set-spinner__location{
+  position: absolute;
+  top:29px; 
+  z-index: 99999; 
+  right: 37px;
+}
+.dropdown_wrapper{
+	position:relative;
+}
+

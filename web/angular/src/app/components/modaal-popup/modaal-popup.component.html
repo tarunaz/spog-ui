@@ -1,0 +1,30 @@
+<div *ngIf="isModalOpen">
+  <div class="modaal-wrapper modaal-confirm" id="modaal_15122220856087cb788d0fb0f4">
+    <div class="modaal-outer-wrapper">
+      <div class="modaal-inner-wrapper">
+        <div class="modaal-container">
+          <div class="modaal-content modaal-focus" aria-hidden="false" aria-label="Dialog Window (Press escape to close)" role="dialog"
+            tabindex="0">
+            <div class="modaal-content-container">
+              <div class="modaal-confirm-content">
+                  <h3 id="modaal-title" innerHTML="{{ defaultDashboardMsg }}"></h3>
+              </div>
+              <div class="modaal-confirm-wrap">
+                <button type="button" class="modaal-confirm-btn modaal-ok" aria-label="Confirm" (click)="confirmDefault($event)"
+                 innerHTML="{{ confirmYes }}"></button>
+                <button type="button" class="modaal-confirm-btn modaal-cancel" aria-label="Cancel" (click)="closePopup($event)"
+                 innerHTML="{{ confirmNo }}"></button>
+              </div>
+              
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modaal-overlay" 
+      id="modaal_15122220856087cb788d0fb0f4_overlay" 
+      style="background: rgb(0, 0, 0); opacity: 0.8;">
+  </div>
+</div>

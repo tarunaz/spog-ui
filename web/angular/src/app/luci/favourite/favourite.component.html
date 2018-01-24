@@ -1,0 +1,57 @@
+<!--<app-spinner [ServiceDataFavCom]="companyInformation"></app-spinner>-->
+<div class="n-doc-item">
+  <app-modaal-popup (isCloseButton)="closePopupParent($event)" [isModalOpen]="isOpen" [nonFavSelectItem]="confirmDefault" [nonFavItemListObjUpdated]="updatedDataNonFavCom"
+    [nonFavItemSitesObjUpdated]="updatedDataNonFavSites" (isShownmodaOpenParent)="onModalopen($event)">
+  </app-modaal-popup>
+
+  <!-- customer view -->
+  <div class="n-page-header" *ngIf="ut === 'customer'">
+    <div class="n-page-header__table">
+      <div class="n-page-header__cel">
+        <h1 class="n-page-header__heading" innerHTML="{{ dashboardTxt }}"> </h1>
+      </div>
+
+      <div class="n-page-header__cel n-page-header__cel--text-right">
+        <div class="n-page-header__site-name" innerHTML="{{ customerName }}"> </div>
+      </div>
+      <div class="n-page-header__cel n-page-header__cel--text-right">
+        <app-widget-dropdown [FavSitesListData]="changedSitesData?.FavSitesListData" [NonFavSitesListData]="changedSitesData?.NonFavSitesListData"
+          [showLookupListSitesWidget]="'showSitesdata'" [placeHolderTxt]="placeHolderTextSites" [favDisplayTxt]="displayFavText"
+          [nonFavDisplayTxt]="displayNonFavText" [showDropDown]="showWidgetDropDown" (FavItemListObjSites)="onSelectFavouriteCompaniesSites($event)"
+          (nonFavItemListObjSites)="onSelectNonFavouriteCompaniesSites($event)" (companyData)="changecompanyata($event)" (siteData)="changesitedata($event)">
+        </app-widget-dropdown>
+      </div>
+    </div>
+  </div>
+
+  <!-- partner view -->
+  <div class="n-page-header" *ngIf="ut === 'partner' || ut === 'asepartner'">
+    <div class="n-page-header__table">
+      <div class="n-page-header__cel">
+        <h1 class="n-page-header__heading" innerHTML="{{ dashboardTxt }}"></h1>
+      </div>
+
+      <div class="n-page-header__cel n-page-header__cel--text-right dropdown_wrapper">
+        <span *ngIf="Spinner" class="spinner set-spinner__location"></span>
+        <app-widget-dropdown [FavListData]="favouriteCompanies" [NonFavListData]="nonFavouriteCompanies" [showLookupListFavWidget]="'showCompanydata'"
+          [placeHolderTxt]="placeHolderText" [favDisplayTxt]="displayFavText" [nonFavDisplayTxt]="displayNonFavText" [showDropDown]="showWidgetDropDown"
+          (FavItemListObj)="onSelectFavouriteCompanies($event)" (nonFavItemListObj)="onSelectNonFavouriteCompanies($event)"
+          (isShowDropDownAny)="chkDropdownOpen1($event)" [showList]="companyDropdown" (selectedSitesData)="updateChildDropDown($event) "
+          (companyData)="changecompanyata($event)" (siteData)="changesitedata($event)">
+        </app-widget-dropdown>
+      </div>
+
+      <!-- sites_name array-->
+      <div class="n-page-header__cel n-page-header__cel--text-right dropdown_wrapper">
+        <span *ngIf="Spinner" class="spinner set-spinner__location"></span>
+        <app-widget-dropdown [FavSitesListData]="changedSitesData?.FavSitesListData" [NonFavSitesListData]="changedSitesData?.NonFavSitesListData"
+          [showLookupListSitesWidget]="'showSitesdata'" [placeHolderTxt]="placeHolderTextSites" [favDisplayTxt]="displayFavText"
+          [nonFavDisplayTxt]="displayNonFavText" [showDropDown]="showWidgetDropDown" (isShowDropDownAny)="chkDropdownOpen2($event)"
+          [showList]="sitesDropdown" (FavItemListObjSites)="onSelectFavouriteCompaniesSites($event)" [test2]='test' (nonFavItemListObjSites)="onSelectNonFavouriteCompaniesSites($event)"
+          [changeModal1]="changeModal" (companyData)="changecompanyata($event)" (siteData)="changesitedata($event)">
+        </app-widget-dropdown>
+      </div>
+    </div>
+  </div>
+  <!--<app-demo-mongo></app-demo-mongo>-->
+</div>

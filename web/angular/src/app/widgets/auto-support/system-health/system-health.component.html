@@ -1,0 +1,58 @@
+<section id="mobile-content" *ngIf="systemhealthdata">
+    <header class="n-widget__heading n-font-bold">
+        <h6 id="actiq_systemhealth-syshealth">{{get("actiq_systemhealth-syshealth")}}</h6>
+    </header>
+    <div class="n-chart">
+        <div class="n-chart__cell leftmargin-60">
+            <donut-chart [chartdata]="systemhealthdata.chartData" [chartlabels]="systemhealthdata.chartLabels" [chartcolors]="systemhealthdata.chartColors"></donut-chart>
+        </div>
+        <div class="n-chart__cell leftmargin-80">
+            <div class="n-chart__legend">
+                <div class="n-chart__legend-label" id="actiq_systemhealth-ontapsystems">
+                    {{get("actiq_systemhealth-ontapsystems")}}
+                </div>
+                <div class="n-chart__legend-stat-list">
+                    <div class="n-chart__stat-table">
+                        <ul class="n-chart__stat-row">
+                            <li class="n-chart__stat-cell n-chart__stat-cell--key">
+                                <span class="n-chart__key" [ngStyle]="{'background-color':systemhealthdata.highissues.color}"></span>
+                            </li>
+                            <li class="n-chart__stat-cell">
+                                <!-- <a href="{{systemhealthdata.issueslink}}">{{systemhealthdata.highissues.count}} {{systemhealthdata.highissues.text}}</a> -->
+                                <a>{{systemhealthdata.highissues.count}} {{systemhealthdata.highissues.text}}</a>
+                                <span class="n-chart__note n-chart__note--is-block" id="actiq_systemhealth-critical">{{get("actiq_systemhealth-critical")}}</span>
+                            </li>
+                        </ul>
+
+                        <ul class="n-chart__stat-row">
+                            <li class="n-chart__stat-cell n-chart__stat-cell--key">
+                                <span class="n-chart__key" [ngStyle]="{'background-color':systemhealthdata.mediumissues.color}"></span>
+                            </li>
+                            <li class="n-chart__stat-cell">
+                                <!-- <a href="{{systemhealthdata.issueslink}}">{{systemhealthdata.mediumissues.count}} {{systemhealthdata.mediumissues.text}}</a> -->
+                                <a>{{systemhealthdata.mediumissues.count}} {{systemhealthdata.mediumissues.text}}</a>
+                                <span class="n-chart__note n-chart__note--is-block" id="actiq_systemhealth-disruptive">{{get("actiq_systemhealth-disruptive")}}</span>
+                            </li>
+                        </ul>
+
+                        <ul class="n-chart__stat-row">
+                            <li class="n-chart__stat-cell n-chart__stat-cell--key">
+                                <span class="n-chart__key" [ngStyle]="{'background-color':systemhealthdata.lowissues.color}"></span>
+                            </li>
+                            <li class="n-chart__stat-cell">
+                                <!-- <a href="{{systemhealthdata.issueslink}}">{{systemhealthdata.lowissues.count}} {{systemhealthdata.lowissues.text}}</a> -->
+                                <a>{{systemhealthdata.lowissues.count}} {{systemhealthdata.lowissues.text}}</a>
+                                <span class="n-chart__note n-chart__note--is-block" id="actiq_systemhealth-minor">{{get("actiq_systemhealth-minor")}}</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- moredetails link comes here -->
+    <app-nav-moredetail [linktext]="systemhealthdata.bottomlinktext" [linkurl]="systemhealthdata.bottomlinkurl"></app-nav-moredetail>
+</section>
+<div *ngIf="!systemhealthdata" class="minwidgethight">
+    <div style="margin: auto;" id="actiq_systemhealth-loading">{{get("actiq_systemhealth-loading")}}</div>
+</div>

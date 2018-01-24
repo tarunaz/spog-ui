@@ -1,0 +1,18 @@
+[
+    {
+        "type": "infoflash",
+        "message": "Info flash related message 1"
+    },
+    {
+        "type": "headline",
+        "message": "Headline message 2"
+    },
+    {
+        "type": "announcement",
+        "message": "Announcement related message 3"
+    },
+    {
+        "type": "announcement",
+        "message": "Announcement related message 4"
+    }
+]

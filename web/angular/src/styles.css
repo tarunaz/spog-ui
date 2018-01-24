@@ -1,0 +1,66 @@
+/* You can add global styles to this file, and also import other style files */
+/*@import url("/cssportal/css/cssweb/luci/css/netapp-library.min.css");*/
+
+.spog-hide {
+    display: none;
+  }
+  .spog-loading {
+    font-weight: 500;
+    font-size: 17px;
+  }
+  
+  .spog-loading:after {
+      overflow: hidden;
+      display: inline-block;
+      vertical-align: bottom;
+      -webkit-animation: ellipsis steps(4,end) 900ms infinite;      
+      animation: ellipsis steps(4,end) 900ms infinite;
+      content: "\2026"; /* ascii code for the ellipsis character */
+      width: 0px;
+  }
+  
+  @keyframes ellipsis {
+  to {
+      width: 1.25em;    
+  }
+  }
+  
+  @-webkit-keyframes ellipsis {
+  to {
+      width: 1.25em;    
+  }
+  }
+
+.alert-danger {
+    color: #a94442;
+    background-color: #f2dede;
+    border-color: #ebccd1;
+}
+
+.alert {
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    width: 98.5%;
+    margin-left: 0.7%;
+}
+
+.close:focus, .close:hover {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+    filter: alpha(opacity=50);
+    opacity: .5;
+}
+
+.close {
+    float: right;
+    font-size: 21px;
+    font-weight: 700;
+    line-height: 1;
+    color: #000;
+    text-shadow: 0 1px 0 #fff;
+    filter: alpha(opacity=20);
+    opacity: .2;
+}

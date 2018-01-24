@@ -1,0 +1,78 @@
+<div class="n-compact-data-table-container">
+  <table class="n-compact-data-table" *ngIf="!isError()">
+    <thead>
+      <tr>
+        <th *ngFor="let col of metaData" [style.width.px]="getColumnWidth(col)" [ngClass]="col.class">
+          {{getColumnName(col)}}
+        </th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let record of records">
+
+        <td *ngFor="let col of metaData">
+          <div *ngIf="isHyperLink(col)">
+            <a [href]="getLinkValue(record, col, 'link')" *ngIf="isLink(record, col)" target="_blank">
+              {{getLinkValue(record, col, 'linkText')}}</a>
+            {{getLinkValue(record, col, 'text')}}
+          </div>
+
+          <div *ngIf="!isHyperLink(col)">
+            <div *ngIf="isbutton(col)">
+              <a class="button button-mini">{{getbuttonValue(record, col, 'buttonText')}}</a>
+
+            </div>
+            <div *ngIf="!isbutton(col)">
+              {{record[col.columnName]}}
+            </div>
+          </div>
+        </td>
+
+      </tr>
+
+    </tbody>
+
+  </table>
+
+  <div #errElement>
+    <div #errElement>
+      <table class="n-compact-data-table" *ngIf="isError()">
+        <thead>
+          <tr>
+            <th *ngFor="let col of metaData" [style.width.px]="getColumnWidth(col)" [ngClass]="col.class">
+              {{getColumnName(col)}}
+            </th>
+          </tr>
+        </thead>
+      </table>
+      <div class="n-widget__notification " *ngIf="isError() && isWarn()">
+        <div class="error-block">
+          <!--<div><svg class="n-icon-triangle-info n-icon n-icon--medium" aria-labelledby="title">
+             <title>triangle-info</title>
+             <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="assets/svg/sprite.svg#triangle-info"></use>
+             </svg>
+            </div>-->
+          <p class="errorMsg"></p>
+        </div>
+        {{getErrorMsg()}}
+      </div>
+
+      <div class="n-widget__notification n-widget__notification--error" *ngIf="isError() && !isWarn()">
+        <div class="error-block">
+          <div>
+            <svg class="n-icon-triangle-info n-icon n-icon--medium" aria-labelledby="title">
+              <title>triangle-info</title>
+              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="assets/svg/sprite.svg#triangle-info"></use>
+            </svg>
+          </div>
+          <p class="errorMsg"></p>
+        </div>
+        {{getErrorMsg()}}
+      </div>
+
+
+    </div>
+  </div>
+
+</div>

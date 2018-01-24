@@ -1,0 +1,44 @@
+.widget-container {
+    width: 100%;
+    margin : 0 -12px;
+    }
+    
+    .OnDragPlaceHolder {
+    /*    background-color: gray; */
+    }
+    
+    .onDragWidget {
+    /*    opacity: 0 */
+    }
+
+.n-spog-container {
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 12px;
+} .n-spog-container:after {
+    content: " ";
+    display: block;
+    clear: both; 
+}
+    
+.n-spog-widget-item {
+    background-color: #FFFFFF;
+    border: 1px solid #D9D9D6;
+    border-top: none;
+    margin: 0 0 24px;
+    padding: 24px 0 0;
+    position: relative;
+    width: calc(100% + 45px);
+    display: inline-block;
+    vertical-align: top;
+    left : -30px
+}
+.n-spog-widget-item::before {
+    content: '';
+    display: block;
+    width: calc(100% + 2px);
+    position: absolute;
+    left: -1px;
+    top: 0;
+    background-color: #A7D500;
+    height: 4px; }

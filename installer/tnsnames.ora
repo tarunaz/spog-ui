@@ -1,0 +1,7 @@
+netapp =
+   (DESCRIPTION =
+     (ADDRESS_LIST =
+         (ADDRESS = (PROTOCOL = TCP)(HOST = now3newdbdev.corp.netapp.com)(PORT = 6000))
+      )
+     (CONNECT_DATA = (SID = D3NOW))
+    )

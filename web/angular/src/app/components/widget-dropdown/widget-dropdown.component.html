@@ -1,0 +1,167 @@
+<div *ngIf="showDropDown" #dropDownClass class="widgetDropOpen n-type-ahead js-object-type-ahead" [class.n-type-ahead--is-open]="showList==true">
+  <div class="n-type-ahead__action">
+    <input type="text" [placeholder]="placeHolderTxt" [(ngModel)]="textValue" (ngModelChange)="lookUpList($event)" class="n-type-ahead__input js-behavior-simulate-type-ahead"
+      (blur)="onBlur($event)" (click)="onFocus($event)" [ngClass]="{'spinner': isProgress}"> 
+    <svg class="n-icon-chevron-down n-type-ahead__input-icon" aria-labelledby="title">
+      <title>chevron-down</title>
+      <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="assets/svg/sprite.svg#chevron-down"></use>
+    </svg>
+  </div>
+
+  <div *ngIf="showList" class="n-type-ahead__menu">
+    <ul class="n-link-list n-link-list--lg">
+      <li *ngFor="let node of softwareList" class="n-link-list__item n-link-list__item--heading" innerHTML="{{ node.Customer_Name }}">
+        <ul class="subnode-list-item">
+          <li *ngFor="let subnode of node['subnodes']" class="n-link-list__item">
+            <a class="n-link-list__link js-behavior-show-type-ahead-step" data-target="2" href="#" innerHTML="{{ subnode.Customer_Name }}">
+            </a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+
+  </div>
+  <div *ngIf="showLookupList" class="n-type-ahead__menu" [class.setdisplayblock]="showLookupList==true">
+    <ul class="n-link-list n-link-list--lg">
+      <li *ngFor="let subnode of LookUpList" class="n-link-list__item">
+        <a class="n-link-list__link js-behavior-show-type-ahead-step" data-target="2" (click)="sendSelectedListItem($event)" innerHTML="{{ subnode }}">
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <div *ngIf="showLookupListFavWidget=='showCompanydata'"  class="n-type-ahead__menu">
+    <ul class="n-link-list n-link-list--lg">
+      <li class="n-link-list__item n-link-list__item--heading animated fadeInUp">
+        <span innerHTML="{{ favDisplayTxt }}"></span>
+      </li>
+      <!-- isdefault Yes -->
+      <li *ngFor="let data of FavListData | filter:{ Customer_Name: changeVal ? textValue : ''}; let ind=index" class="n-link-list__item animated fadeInUp">
+        <div [hidden]="data.isDefault=='N'">
+          <button (click)="selectFavouriteCompanies(data,ind,$event)" class="button button--clean n-type-ahead__fav-button n-type-ahead__fav-button--is-fav js-behavior-favorite-item"
+            [ngClass]="{'isDefalutColor':(data.isComFav=='Y' && data.isDefault=='Y') || data.isDefault=='Y'}">
+            <svg class="n-icon-heart-o n-icon n-icon--medium n-type-ahead__fav-icon" aria-labelledby="title">
+              <title>heart-o</title>
+              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="assets/svg/sprite.svg#heart-o"></use>
+            </svg>
+            <svg class="n-icon-heart n-icon n-icon--medium n-type-ahead__fav-icon-fav" aria-labelledby="title">
+              <title>heart</title>
+              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="assets/svg/sprite.svg#heart"></use>
+            </svg>
+          </button>
+          <a class="n-link-list__link n-link-list__link_longer-name__custom-fix js-behavior-simulate-loader" href="" (click)="getSelectedDropdown(data,ind,$event)"
+            innerHTML="{{ data.Customer_Name | highlight : textValue }}"></a>
+        </div>
+      </li>
+
+      <li class="n-link-list__item animated fadeInUp" *ngFor="let data of FavListData | sort :'Customer_Name' | filter:{ Customer_Name: changeVal ? textValue : ''}; let ind=index">
+        <div [hidden]="data.isDefault=='Y'">
+          <button (click)="selectFavouriteCompanies(data,ind,$event)" 
+            class="button button--clean n-type-ahead__fav-button n-type-ahead__fav-button--is-fav js-behavior-favorite-item">
+            <svg class="n-icon-heart-o n-icon n-icon--medium n-type-ahead__fav-icon" aria-labelledby="title">
+              <title>heart-o</title>
+              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="assets/svg/sprite.svg#heart-o"></use>
+            </svg>
+            <svg class="n-icon-heart n-icon n-icon--medium n-type-ahead__fav-icon-fav" aria-labelledby="title">
+              <title>heart</title>
+              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="assets/svg/sprite.svg#heart"></use>
+            </svg>
+          </button>
+
+          <a class="n-link-list__link n-link-list__link_longer-name__custom-fix js-behavior-simulate-loader" href="" 
+          (click)="getSelectedDropdown(data,ind,$event)"
+            innerHTML="{{ data.Customer_Name | highlight : textValue }}"></a>
+        </div>
+      </li>
+      <li class="n-link-list__item n-link-list__item--heading animated fadeInUp">
+        <span innerHTML="{{ nonFavDisplayTxt }}"> </span>
+      </li>
+      <li class="n-link-list__item animated fadeInUp" *ngFor="let data of NonFavListData | sort :'Customer_Name' | filter:{ Customer_Name: changeVal ? textValue : ''}; let ind=index">
+
+        <button [disabled]="FavListData?.length==10" (click)="selectNonFavouriteCompanies(data,ind,$event)" class="button button--clean n-type-ahead__fav-button js-behavior-favorite-item">
+          <svg class="n-icon-heart-o n-icon n-icon--medium n-type-ahead__fav-icon" aria-labelledby="title">
+            <title>heart-o</title>
+            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="assets/svg/sprite.svg#heart-o"></use>
+          </svg>
+          <svg class="n-icon-heart n-icon n-icon--medium n-type-ahead__fav-icon-fav" aria-labelledby="title">
+            <title>heart</title>
+            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="assets/svg/sprite.svg#heart"></use>
+          </svg>
+        </button>
+        <a class="n-link-list__link n-link-list__link_longer-name__custom-fix js-behavior-simulate-loader" href="" 
+        (click)="getSelectedDropdown(data,ind,$event)"
+          innerHTML="{{ data.Customer_Name | highlight : textValue }}"></a>
+      </li>
+    </ul>
+  </div>
+
+  <!-- sites data dropdwon-->
+  <div *ngIf="showLookupListSitesWidget=='showSitesdata'" class="n-type-ahead__menu n-type-ahead-sites__dropdown-custom">
+    <ul class="n-link-list n-link-list--lg allSites_custom-margin">
+      <li class="n-link-list__item animated fadeInUp">
+        <a class="n-link-list__link n-link-list__link_longer-name__custom-fix js-behavior-simulate-loader" innerHTML="{{ allSites }}"></a>
+      </li>
+    </ul>
+    <ul class="n-link-list n-link-list--lg">
+      <li class="n-link-list__item n-link-list__item--heading animated fadeInUp">
+        <span innerHTML="{{ favDisplayTxt }}"> </span>
+      </li>
+      <li class="n-link-list__item animated fadeInUp" *ngFor="let data of FavSitesListData | filter:{ SiteName: changeVal ? textValue : ''}; let ind=index">
+        <div [hidden]="data.isDefault=='N'">
+          <button (click)="selectFavouriteSites(data,ind,$event)" 
+          [ngClass]="{'isDefalutColor':(data.isComFav=='Y' && data.isDefault=='Y') || data.isDefault=='Y'}"
+          class="button button--clean n-type-ahead__fav-button n-type-ahead__fav-button--is-fav js-behavior-favorite-item">
+            <svg class="n-icon-heart-o n-icon n-icon--medium n-type-ahead__fav-icon" aria-labelledby="title">
+              <title>heart-o</title>
+              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="assets/svg/sprite.svg#heart-o"></use>
+            </svg>
+            <svg class="n-icon-heart n-icon n-icon--medium n-type-ahead__fav-icon-fav" aria-labelledby="title">
+              <title>heart</title>
+              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="assets/svg/sprite.svg#heart"></use>
+            </svg>
+          </button>
+          <a class="n-link-list__link n-link-list__link_longer-name__custom-fix js-behavior-simulate-loader" (click)="getSelectedDropdownSites(data,ind,$event)"
+            href="" innerHTML="{{ data.SiteName | highlight : textValue }}"></a>
+        </div>
+
+      </li>
+      <li class="n-link-list__item animated fadeInUp" *ngFor="let data of FavSitesListData | sort :'SiteName' | filter:{ SiteName: changeVal ? textValue : ''}; let ind=index">
+        <div [hidden]="data.isDefault=='Y'">
+          <button (click)="selectFavouriteSites(data,ind,$event)" 
+            class="button button--clean n-type-ahead__fav-button n-type-ahead__fav-button--is-fav js-behavior-favorite-item">
+            <svg class="n-icon-heart-o n-icon n-icon--medium n-type-ahead__fav-icon" aria-labelledby="title">
+              <title>heart-o</title>
+              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="assets/svg/sprite.svg#heart-o"></use>
+            </svg>
+            <svg class="n-icon-heart n-icon n-icon--medium n-type-ahead__fav-icon-fav" aria-labelledby="title">
+              <title>heart</title>
+              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="assets/svg/sprite.svg#heart"></use>
+            </svg>
+          </button>
+          <a class="n-link-list__link n-link-list__link_longer-name__custom-fix js-behavior-simulate-loader" (click)="getSelectedDropdownSites(data,ind,$event)"
+            href="" innerHTML="{{ data.SiteName | highlight : textValue }}"></a>
+        </div>
+
+      </li>
+      <li class="n-link-list__item n-link-list__item--heading animated fadeInUp">
+        <span innerHTML="{{ nonFavDisplayTxt }}"> </span>
+      </li>
+      <li class="n-link-list__item animated fadeInUp" *ngFor="let data of NonFavSitesListData | sort :'SiteName' | filter:{ SiteName: changeVal ? textValue : ''}; let ind=index">
+        <div>
+          <button [disabled]="FavSitesListData?.length==10" (click)="selectNonFavouriteSites(data,ind,$event)" class="button button--clean n-type-ahead__fav-button js-behavior-favorite-item">
+            <svg class="n-icon-heart-o n-icon n-icon--medium n-type-ahead__fav-icon" aria-labelledby="title">
+              <title>heart-o</title>
+              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="assets/svg/sprite.svg#heart-o"></use>
+            </svg>
+            <svg class="n-icon-heart n-icon n-icon--medium n-type-ahead__fav-icon-fav" aria-labelledby="title">
+              <title>heart</title>
+              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="assets/svg/sprite.svg#heart"></use>
+            </svg>
+          </button>
+          <a class="n-link-list__link n-link-list__link_longer-name__custom-fix js-behavior-simulate-loader" href="" (click)="getSelectedDropdownSites(data,ind,$event)"
+            innerHTML="{{ data.SiteName | highlight : textValue }}"></a>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>

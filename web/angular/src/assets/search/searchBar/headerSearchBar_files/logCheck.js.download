@@ -1,0 +1,85 @@
+function getCookie(cname) {
+  var name = cname + "=";
+  var ca = document.cookie.split(';');
+  for (var i = 0; i < ca.length; i++) {
+    var c = ca[i].trim();
+    if (c.indexOf(name) == 0)
+      return c.substring(name.length, c.length);
+  }
+  return "";
+}
+
+/*
+	This funtion checks the existence of IsLoggedin cookie.
+*/
+function isUserLoggedInPortalOrECM() {
+
+  var isLoggedcookie = getCookie("IsLoggedin");
+  var isECMLoggedcookie = getCookie("isloggedin");
+  if ((isLoggedcookie != null && isLoggedcookie != "") || (isECMLoggedcookie != null && isECMLoggedcookie != "")) {
+    return true;
+  }
+  return false;
+}
+
+/*
+ * This funtion finds the user role and sets up the HTML.
+ */
+function setClientParam(searchForm) {
+  var uRole = '';
+  if (!isUserLoggedInPortalOrECM()) {
+		searchForm.client.value = "public";
+		searchForm.access.value = "p";
+    searchForm.site.value = "gspub";
+		$('#bugRow').hide();
+		uRole = 'public';
+  } else {
+    $.ajax({
+      url: "/search/api/ldap/popCookies",
+      success: function(data) {
+        $.ajax({
+          url: "/search/api/ldap/searchBar",
+          dataType: 'json',
+          success: function(data) {
+            if (data.isCustomer == true) {
+              searchForm.client.value = "customer";
+    					searchForm.access.value = "a";
+              uRole = 'customer';
+            } else if (data.isPartner == true) {
+              searchForm.client.value = "partner";
+    					searchForm.access.value = "a";
+              uRole = 'partner';
+            } else if (data.isInternal == true) {
+              searchForm.client.value = "internal";
+    					searchForm.access.value = "a";
+              uRole = 'internal';
+            } else if (data.isPublic == true) {
+              searchForm.client.value = "public";
+    					searchForm.access.value = "p";
+              searchForm.site.value = "gspub";
+    					$('#bugRow').hide();
+              uRole = 'public';
+            }
+          },
+          error: function(jqXHR, textStatus) {
+            console.log('searchBar API failed: ' + textStatus);
+          }
+        });
+      },
+      error: function(jqXHR, textStatus) {
+        console.log('popCookies API failed: ' + textStatus);
+      }
+    });
+  }
+  return uRole;
+}
+
+$(document).ready(
+  function() {
+    //getting the logged in user role
+    var searchForm = document.getElementById(ss_form_element);
+    if (searchForm) {
+      userRole = setClientParam(searchForm);
+    }
+  }
+);

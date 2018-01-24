@@ -1,0 +1,99 @@
+.setdisplayblock{
+  display: block;}
+.n-type-ahead-sites__dropdown-custom{
+    max-height: 490px; overflow-x: hidden;}
+
+@-moz-document url-prefix() {
+  .n-link-list__item{
+    margin-bottom: 11px;}
+  .n-type-ahead__menu{
+    max-height: 445px; }
+    .n-type-ahead-sites__dropdown-custom{
+      max-height: 480px !important; }
+}
+
+.n-link-list__link_longer-name__custom-fix{
+  display : inline;
+}
+
+.allSites_custom-margin{
+margin-bottom : 0em;}
+
+.subnode-list-item{
+  padding: 0;
+  list-style-type: none;}
+
+  @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    .n-link-list--lg .n-link-list__link {
+         line-height: 18px;
+    }
+    .button--clean{
+      background-color : transparent;
+    }
+ }
+
+.animationTop{
+  top: 100%;
+  position: relative;
+  transition: all .1s ease-out;
+  background: #428bca;
+  height: 100%; }
+
+.isDefalutColor .n-icon{
+  fill: #05d825;}
+
+@keyframes MyAnimation {
+  0% {
+      opacity: 0;
+      transition: opacity 2s linear;
+    }
+     25% {
+      opacity: .4;
+      transition: opacity 2s linear;
+    }
+    50% {
+      opacity: .6;
+      transition: opacity 2s linear;
+    }
+    100% {
+      opacity: 1;
+      transition: opacity 2s linear;
+    } 
+}
+
+.animated {
+  animation-duration: 1s;
+  animation-fill-mode: both;
+}
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 100%, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.fadeInUp {
+  animation-name: fadeInUp;
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fadeInDown {
+  animation-name: fadeInDown;
+}
+

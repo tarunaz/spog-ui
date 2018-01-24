@@ -1,0 +1,117 @@
+<section class="n-widget__content">
+
+  <div class="n-widget__title n-widget__row n-widget__row--valign-center n-widget__row--nowrap">
+    <h4 class="n-widget__col n-widget__title-heading" id="cases_cases">{{get("cases_cases")}}</h4>
+
+    <div class="n-widget__col n-widget__col-icon">
+      <button class="button button--clean js-behavior-show-search-input">
+        <svg class="n-icon-search n-icon n-icon--default" aria-labelledby="title">
+          <title>search</title>
+          <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="assets/svg/sprite.svg#search"></use>
+        </svg>
+      </button>
+
+      <div class="n-widget__search-input js-object-search-input">
+        <div class="n-type-ahead n-type-ahead--search js-object-type-ahead">
+          <div class="n-type-ahead__action">
+            <input type="text" placeholder="Search by Case Number, Serial Number and more..." class="n-type-ahead__input js-behavior-simulate-type-ahead">
+            <svg class="n-icon-search n-type-ahead__input-icon n-type-ahead__input-icon--search" aria-labelledby="title">
+              <title>search</title>
+              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="assets/svg/sprite.svg#search"></use>
+            </svg>
+          </div>
+
+          <div class="n-type-ahead__menu">
+            <ul class="n-link-list n-link-list--lg">
+              <li class="n-link-list__item n-link-list__item--heading n-link-list__item--default-selected">
+                Case Number
+              </li>
+              <li class="n-link-list__item">
+                <a class="n-link-list__link" href="#">
+                  <mark class="n-link-list__mark">41</mark>335365</a>
+              </li>
+              <li class="n-link-list__item">
+                <a class="n-link-list__link" href="#">
+                  <mark class="n-link-list__mark">41</mark>258983</a>
+              </li>
+              <li class="n-link-list__item">
+                <a class="n-link-list__link" href="#">
+                  <mark class="n-link-list__mark">41</mark>054890</a>
+              </li>
+            </ul>
+
+            <ul class="n-link-list n-link-list--lg">
+              <li class="n-link-list__item n-link-list__item--heading n-link-list__item--default-selected">
+                Serial Number
+              </li>
+              <li class="n-link-list__item">
+                <a class="n-link-list__link" href="#">107639533
+                  <mark class="n-link-list__mark">41</mark>
+                </a>
+              </li>
+              <li class="n-link-list__item">
+                <a class="n-link-list__link" href="#">263
+                  <mark class="n-link-list__mark">41</mark>245589</a>
+              </li>
+              <li class="n-link-list__item">
+                <a class="n-link-list__link" href="#">78
+                  <mark class="n-link-list__mark">41</mark>5349752</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <button class="button button--clean n-widget__search-dismiss js-behavior-hide-search-input">
+          <svg class="n-icon-close n-icon n-icon--default" aria-labelledby="title">
+            <title>close</title>
+            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="assets/svg/sprite.svg#close"></use>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="n-widget__col n-widget__col-icon">
+      <svg aria-labelledby="title" class="n-icon-arrows n-icon n-icon--default n-widget__icon-move">
+        <title>arrows</title>
+        <use xlink:href="assets/svg/sprite.svg#arrows" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
+    </svg>
+    </div>
+  </div>
+<div *ngIf = "casesdata">
+  <div class="n-widget__heading" id="cases_mostrecent">
+    <h6>{{get("cases_mostrecent")}}</h6>
+  </div>
+
+  <app-spog-grid [metaData]='response.metaData' [records]='casesdata' [error]='response.error'></app-spog-grid>
+
+  <section class="n-widget__row n-widget__row--valign-center">
+    <div class="n-widget__col n-widget__col-1-2">
+      <a class="n-widget__link-all" href="#" id="cases_allcasereports">{{get("cases_allcasereports")}}
+        <svg class="n-icon-arrow-circle-o-right n-icon n-icon--default" aria-labelledby="title">
+          <title>arrow-circle-o-right</title>
+          <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="assets/svg/sprite.svg#arrow-circle-o-right"></use>
+        </svg>
+      </a>
+    </div>
+
+    <div class="n-widget__col n-widget__col-1-2 n-widget__col--align-right">
+      <a href="#" class="button button--small" id="cases_createcase">{{get("cases_createcase")}}</a>
+    </div>
+  </section>
+</div>
+
+
+<div *ngIf = "!casesdata">
+    <div class="loader loader--style3" title="2">
+        <svg version="1.1" id="loader-1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+            width="100px" height="100px" viewBox="0 0 50 50" style="enable-background:new 0 0 50 50;" xml:space="preserve">
+            <path fill="#000" d="M43.935,25.145c0-10.318-8.364-18.683-18.683-18.683c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615c8.072,0,14.615,6.543,14.615,14.615H43.935z">
+                <animateTransform attributeType="xml" attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="0.6s" repeatCount="indefinite"
+                />
+            </path>
+        </svg>
+    </div>
+
+</div>
+
+</section>

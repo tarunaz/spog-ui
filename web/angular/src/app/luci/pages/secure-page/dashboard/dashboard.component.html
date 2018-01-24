@@ -1,0 +1,107 @@
+
+<app-header-secure [fullName]="fullName"></app-header-secure>
+
+<main role="main" id="n-main-content" class="n-main-content">
+    <app-notice></app-notice>
+    <div class="n-container">
+        <div [ngClass]="{'spog-hide': !isProgress}" class="spog-loading">Loading </div>
+        
+        <app-favourite [ut]="ut" ></app-favourite>
+
+        <div *ngIf="errorMsg != null && errorMsg.length > 0" class="alert alert-danger">
+            <span class="close" data-dismiss="alert" (click)="errorMsg = ''">×</span>
+            <strong>Error!&nbsp;&nbsp;&nbsp;</strong> {{errorMsg}}
+        </div>
+        <div class="widget-container" #container>
+            <ul class="n-col-sm-12 n-col-md-12 n-col-lg-6 js-object-sortable ui-sortable" [dragula]='"first-bag"' id="list1">
+                 <ng-container *ngFor="let item of firstList" [ngTemplateOutlet]="getTemplateType(item.widgetName)" ></ng-container>      
+            </ul>
+            
+            <ul class="n-col-sm-12 n-col-md-12 n-col-lg-6 js-object-sortable ui-sortable" [dragula]='"first-bag"' id="list2">
+                 <ng-container *ngFor="let item of secondList" [ngTemplateOutlet]="getTemplateType(item.widgetName)" ></ng-container> 
+            </ul>
+    
+        </div>
+          
+            <ng-template #systemInv> 
+                <div [class.OnDragPlaceHolder]="show_SYST_WID_PlaceHolder==true" id="syst_wid" delayDrag name="systemInv">
+                        <li class="n-spog-widget-item js-behavior-draggable-widget ui-sortable-handle" [class.onDragWidget]="show_SYST_WID_PlaceHolder==true">
+                            <app-system-inventory-widget></app-system-inventory-widget>
+                        </li>
+                    </div>
+            </ng-template>
+
+            <ng-template #bugSearch>
+            <div [class.OnDragPlaceHolder]="show_BUG_WID_PlaceHolder==true" id="bug_wid" delayDrag name="bugSearch">
+                    <li class="n-spog-widget-item js-behavior-draggable-widget ui-sortable-handle" [class.onDragWidget]="show_BUG_WID_PlaceHolder==true">
+                        <app-bug-search></app-bug-search>
+                    </li>
+                </div>
+            </ng-template>
+
+            <ng-template #orderStatus>
+              <div [class.OnDragPlaceHolder]="show_ORDR_WID_PlaceHolder==true" id="ordr_wid" delayDrag name="orderStatus">
+                    <li class="n-spog-widget-item js-behavior-draggable-widget ui-sortable-handle" [class.onDragWidget]="show_ORDR_WID_PlaceHolder==true">
+                        <app-order-status-widget></app-order-status-widget>
+                    </li>
+                </div>
+            </ng-template>
+
+            <ng-template #activeIq>
+                <div [class.OnDragPlaceHolder]="show_AUTO_WID_PlaceHolder==true" id="auto_wid" delayDrag name="activeIq">
+                    <li class="n-spog-widget-item js-behavior-draggable-widget ui-sortable-handle" [class.onDragWidget]="show_AUTO_WID_PlaceHolder==true">
+                        <app-auto-support-widget></app-auto-support-widget>
+                    </li>
+                </div>
+            </ng-template>
+            <ng-template #contracts>
+                <div [class.OnDragPlaceHolder]="show_AUTO_WID_PlaceHolder==true" id="cnw_wid" delayDrag name="contracts">
+                    <li class="n-spog-widget-item js-behavior-draggable-widget ui-sortable-handle" [class.onDragWidget]="show_CNW_WID_PlaceHolder==true">
+                        <app-contracts-and-warranties></app-contracts-and-warranties>
+                    </li>
+                </div>
+            </ng-template>
+            <ng-template #cases>
+                <div [class.OnDragPlaceHolder]="show_CASE_WID_PlaceHolder==true" id="case_wid" delayDrag name="cases">
+                    <li class="n-spog-widget-item js-behavior-draggable-widget ui-sortable-handle" [class.onDragWidget]="show_CASE_WID_PlaceHolder==true">
+                        <app-cases-widget></app-cases-widget>
+                    </li>
+                </div>
+            </ng-template>
+        
+                
+            <ng-template #aseCorner>
+                <div [class.OnDragPlaceHolder]="show_ASE_WID_PlaceHolder==true" id="ase_wid" delayDrag name="aseCorner">
+                    <li class="n-spog-widget-item js-behavior-draggable-widget ui-sortable-handle" [class.onDragWidget]="show_ASE_WID_PlaceHolder==true">
+                        <app-ase-corner></app-ase-corner>
+                    </li>
+                </div>
+            </ng-template>
+
+            <ng-template #guidedProSolv>
+                <div [class.OnDragPlaceHolder]="show_GDPS_WID_PlaceHolder==true" id="gdps_wid" delayDrag name="guidedProSolv">
+                        <li class="n-spog-widget-item js-behavior-draggable-widget ui-sortable-handle" [class.onDragWidget]="show_GDPS_WID_PlaceHolder==true">
+                            <app-gps-widget></app-gps-widget>
+                        </li>
+                </div>
+            </ng-template>
+
+            <ng-template #partRequest>
+                <div [class.OnDragPlaceHolder]="show_PART_WID_PlaceHolder==true" id="part_wid" delayDrag name="partRequest">
+                    <li class="n-spog-widget-item js-behavior-draggable-widget ui-sortable-handle" [class.onDragWidget]="show_PART_WID_PlaceHolder==true">
+                        <app-part-requests-widget></app-part-requests-widget>
+                    </li>
+                </div>
+            </ng-template>
+
+            <ng-template #softwareDownload>
+                <div [class.OnDragPlaceHolder]="show_SOFT_WID_PlaceHolder==true" id="soft_wid" delayDrag name="softwareDownload">
+                    <li class="n-spog-widget-item js-behavior-draggable-widget ui-sortable-handle" [class.onDragWidget]="show_SOFT_WID_PlaceHolder==true">
+                        <app-software-downloads-widget></app-software-downloads-widget>
+                    </li>
+                </div>
+            </ng-template>
+
+    </div>
+</main>
+<app-footer></app-footer>

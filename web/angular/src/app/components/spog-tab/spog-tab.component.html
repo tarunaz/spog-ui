@@ -1,0 +1,19 @@
+<div class="n-compact-tabs js-object-compact-tabs">
+        <ul class="n-compact-tabs__row">
+            <li class="n-compact-tabs__item">
+                <span class="n-compact-tabs__label">View by:</span>
+            </li>    
+            <li *ngFor="let headerdata of tabheaders;let i = index" class="n-compact-tabs__item" >
+                <button class="n-compact-tabs__tab js-behavior-toggle-compact-tab" [class.n-compact-tabs__tab--is-active]="i==0" 
+                (click)="Tabbuttonclicked(headerdata.headername)" 
+                name={{headerdata.headername}} >
+                {{headerdata.headertext}}
+                </button>
+            </li>
+        </ul>
+
+        <div class="n-compact-tabs__tab-content" style="display: block;">
+            <dynamic-component-loader #wdgtSystemInventory  [componentData]="dynamiccomponentdata"></dynamic-component-loader>
+        </div>
+
+</div>

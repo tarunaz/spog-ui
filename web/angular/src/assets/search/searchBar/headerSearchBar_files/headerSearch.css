@@ -1,0 +1,220 @@
+p, tr {
+  font-size: 12px;
+  font-weight: normal;
+}
+
+body {
+  margin: 0px;
+}
+
+form {
+  margin-bottom: 0px;
+}
+
+.searchBarWrapper {
+  overflow: hidden;
+}
+
+.searchBar {
+  height: 40px;
+      z-index: 999;
+      display: block;
+      position: relative;
+}
+
+#searchButton {
+  float: right;
+  margin-top: -40px;
+  cursor: pointer;
+}
+
+.headerSearchInput {
+  float: left;
+  outline: none;
+  color: black;
+  cursor: auto;
+  font-size: 15px;
+  font-stretch: normal;
+  font-style: normal;
+  font-variant: normal;
+  letter-spacing: normal;
+  line-height: normal;
+  text-align: start;
+  text-rendering: auto;
+  word-spacing: 0px;
+}
+
+.headerSearchInput:focus {
+    border-radius: 6px;
+}
+
+.headerSearchInput::-ms-clear {
+    display: none;
+}
+
+.clearIcon {
+  height: 10px;
+  width: 10px;
+  color: rgb(0, 103, 197);
+  cursor: pointer;
+  position: absolute;
+  margin-right: 6px;
+  margin-top: 15px;
+  z-index: 2000;
+  right: 40px;
+}
+
+.clearButton {
+  cursor: pointer;
+}
+
+.searchPopUp {
+  height: 390px;
+  background-color: white;
+
+}
+
+.popUpTable {
+ position: relative;
+ display: block;
+  border-style: solid;
+  border-color: #dddad2;
+  border-width: 1px;
+  /*border-top-left-radius: 5px;
+  border-top-right-radius: 5px;*/
+  margin-top: -40px;
+  background-color: white;
+}
+
+.popUpTable tbody {
+    position: relative;
+     display: block;
+}
+
+.suggestionsAndFiltersRow {
+    display: inline-block;
+}
+
+.suggestionsColumn {
+  width: 47%;
+  vertical-align: top;
+  padding: 15px;
+  position: relative;
+  display: inline-block;
+  min-height: 350px;
+}
+
+.suggestionsTable {
+  table-layout: fixed;
+  overflow: hidden;
+  width: 100%;
+}
+
+.filtersColumn {
+  width: 52%;
+  vertical-align: top;
+  padding: 10px 10px 7px 20px;
+  position: relative;
+  display: inline-block;
+  min-height: 350px;
+  border-left: 1px solid #dddad2;
+}
+
+.filtersTable {
+    width: 100%;
+}
+
+.filterByCat {
+  margin-top: 10px;
+  margin-left: 3px;
+  margin-right: 0px;
+  margin-bottom: 10px;
+}
+
+.filterInp {
+  cursor: pointer;
+}
+
+.closeRow {
+  height: 70px;
+      vertical-align: bottom;
+      width: 100%;
+      display: block;
+}
+
+.closeCol {
+    float: right;
+}
+
+.closeButton {
+  color: #00c;
+  cursor: pointer;
+  float:right;
+}
+
+.ss-gac-a {
+  cursor: pointer;
+}
+
+.ss-gac-b {
+  cursor: pointer;
+}
+
+.ss-gac-c {
+  width: 100%;
+  height: 20px;
+  padding-left: 3px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 700;
+  color: #0067C5;
+  display: block;
+}
+
+.ss-gac-c:hover{
+    text-decoration: underline;
+}
+
+.tooltip {
+  z-index: 999999 !important;
+  position: absolute;
+  background: white;
+  color: black;
+  font-size: 8px Arial;
+  width: auto;
+  margin-top: 20px;
+  border: 1px solid black;
+  border-radius: 4px;
+}
+
+#header_search_suggest_main #close {
+    font-size: 14px;
+    padding: 12px 20px;
+    border: 0;
+    margin: 10px 10px 0 0;
+    border-radius: 6px;
+}
+
+#header_search_suggest tr {
+    margin-bottom: 12px;
+    width: 100%;
+    position: relative;
+    display: block;
+}
+
+.headerSearchInput {
+    border-radius: 6px !Important;
+}
+
+@media screen and (max-width: 767px){
+   .headerSearchInput{
+    width: 100% !important;
+   }
+   .popUpTable {
+    width: 100% ;
+   }
+   .closeButton {
+    margin-right: 20px;
+   }
+}

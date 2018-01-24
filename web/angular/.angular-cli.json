@@ -1,0 +1,72 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "project": {
+    "name": "angular"
+  },
+  "apps": [
+    {
+      "root": "src",
+      "outDir": "dist",
+      "assets": [
+        "assets",
+        "favicon.ico"
+      ],
+      "index": "index.html",
+      "main": "main.ts",
+      "polyfills": "polyfills.ts",
+      "test": "test.ts",
+      "tsconfig": "tsconfig.app.json",
+      "testTsconfig": "tsconfig.spec.json",
+      "prefix": "app",
+      "styles": [
+        "assets/svg/sprite.svg",
+        "assets/css/netapp-library.min.css",
+        "assets/css/support-dashboard.css",
+        "assets/css/netapp-library-header-override.css",
+        "styles.css",
+        "../node_modules/dragula/dist/dragula.css"
+      ],
+      "scripts": [
+        "assets/js/jquery.min.js",
+        "assets/js/jquery-ui.min.js",
+        "assets/js/components.js",
+        "../node_modules/chart.js/dist/Chart.min.js"
+      ],
+      "environmentSource": "environments/environment.ts",
+      "environments": {
+        "dev": "environments/environment.ts",
+        "prod": "environments/environment.prod.ts",
+        "dev01": "environments/environment.dev01.ts",
+        "osdev": "environments/environment.os.dev.ts",
+        "osqa": "environments/environment.os.qa.ts",
+        "local": "environments/environment.local.ts",
+        "osprod": "environments/environment.os.prod.ts"
+      }
+    }
+  ],
+  "e2e": {
+    "protractor": {
+      "config": "./protractor.conf.js"
+    }
+  },
+  "lint": [
+    {
+      "project": "src/tsconfig.app.json"
+    },
+    {
+      "project": "src/tsconfig.spec.json"
+    },
+    {
+      "project": "e2e/tsconfig.e2e.json"
+    }
+  ],
+  "test": {
+    "karma": {
+      "config": "./karma.conf.js"
+    }
+  },
+  "defaults": {
+    "styleExt": "css",
+    "component": {}
+  }  
+}

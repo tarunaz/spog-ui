@@ -1,0 +1,124 @@
+
+
+
+
+<div>
+    
+<div class="n-widget__heading">
+        <h6>Support Status</h6>
+</div>
+
+<dl class="n-chart">
+    <dt class="n-chart__cell js-object-inject-tooltip-parent">
+        <donut-chart id="supportchart" [chartdata]="supportChartData" [chartlabels] ="supportChartLabels" 
+        [chartcolors]="supportChartColors" [chartname]="supportchartname"></donut-chart> 
+    </dt>
+
+    <dd class="n-chart__cell">
+            <dl class="n-chart__legend">
+                <dt class="n-chart__legend-label">
+                    Support Contract Status
+                </dt>
+
+                <dd class="n-chart__legend-stat-list">
+                    <div class="n-chart__stat-table">
+                        <ul class="n-chart__stat-row">
+                            <li class="n-chart__stat-cell n-chart__stat-cell--key">
+                                <span class="n-chart__key n-chart__key--error"></span>
+                            </li>
+                            <li class="n-chart__stat-cell n-chart__stat-cell--number">
+                                <a href="#">25</a>
+                            </li>
+                            <li class="n-chart__stat-cell">
+                                <a href="#">Expired</a>
+                            </li>
+                            <li class="n-chart__stat-cell">
+                                <a href="#" class="n-chart__link">Renew</a>
+                            </li>
+                        </ul>
+
+                        <ul class="n-chart__stat-row">
+                            <li class="n-chart__stat-cell n-chart__stat-cell--key">
+                                <span class="n-chart__key n-chart__key--caution"></span>
+                            </li>
+                            <li class="n-chart__stat-cell n-chart__stat-cell--number">
+                                <a href="https://invis.io/FRC1TOETM#/246720179_Filtered_Systems_Table_-XL-_1394p-_Copy">50</a>
+                            </li>
+                            <li class="n-chart__stat-cell">
+                                <a href="https://invis.io/FRC1TOETM#/246720179_Filtered_Systems_Table_-XL-_1394p-_Copy">Expiring in 60 days</a>
+                            </li>
+                            <li class="n-chart__stat-cell">
+                                <a href="https://invis.io/FRC1TOETM#/246720179_Filtered_Systems_Table_-XL-_1394p-_Copy" class="n-chart__link">Renew</a>
+                            </li>
+                        </ul>
+
+                        <ul class="n-chart__stat-row">
+                            <li class="n-chart__stat-cell n-chart__stat-cell--key">
+                                <span class="n-chart__key n-chart__key--success"></span>
+                            </li>
+                            <li class="n-chart__stat-cell n-chart__stat-cell--number">
+                                <a href="https://invis.io/FRC1TOETM#/244138814_Filtered_2_Systems_Table_-XL-_1394p-">350</a>
+                            </li>
+                            <li class="n-chart__stat-cell">
+                                <a href="https://invis.io/FRC1TOETM#/244138814_Filtered_2_Systems_Table_-XL-_1394p-">Under Contract</a>
+                            </li>
+                            <li class="n-chart__stat-cell">
+
+                            </li>
+                        </ul>
+                    </div>
+                </dd>
+            </dl>
+
+
+            <dl class="n-chart__legend">
+                    <dt class="n-chart__legend-label">
+                        No Longer Supported
+                    </dt>
+
+                    <dd class="n-chart__legend-stat-list">
+                        <div class="n-chart__stat-table">
+                            <ul class="n-chart__stat-row">
+                                <li class="n-chart__stat-cell">
+                                    <a href="#" class="n-chart__link">150 of 425</a> are no longer supported (EOLd)
+                                </li>
+                            </ul>
+                        </div>
+                    </dd>
+                </dl>
+
+    </dd>
+
+</dl>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div class="n-chart__cell">
+
+    <div class="n-chart__legend">
+      <div *ngFor="let lblname of supportChartLabels;let i = index" style="clear: both;margin:30px;padding: 5px;" >
+        
+        <span style="float:left;width:20px;height: 20px;margin-right: 3px; border-radius: 50%;" 
+        [ngStyle]="{'background-color': getcolor(i) }"></span>
+        <div style="padding-left: 30px;">
+            <span style="float:left;margin-top:-2px; ">{{getDataValue(i)}}</span> 
+            <span style="float:left;margin-top:-2px; padding-left: 10px;">{{lblname}}</span>               
+        </div>
+    </div> 
+
+
+</div>-->
+

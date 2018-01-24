@@ -1,0 +1,36 @@
+<section class="n-widget__content">
+
+  <div class="n-widget__title n-widget__row n-widget__row--valign-center n-widget__row--nowrap">
+
+    <h4 class="n-widget__col n-widget__title-heading" id="prtrq_partrequests">{{get("prtrq_partrequests")}}</h4>
+
+    <div class="n-widget__col n-widget__col-icon">
+      <svg aria-labelledby="title" class="n-icon-arrows n-icon n-icon--default n-widget__icon-move">
+        <title>arrows</title>
+        <use xlink:href="assets/svg/sprite.svg#arrows" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
+      </svg>
+    </div>
+  </div>
+
+
+  <div class="n-widget__heading" id="prtrq_mostrecent">
+    <h6>{{get("prtrq_mostrecent")}}</h6>
+  </div>
+
+  <app-spog-grid [metaData]='response.metaData' [records]='partrequestsdata' [error]='response.error'></app-spog-grid>
+
+  <section class="n-widget__row n-widget__row--valign-center">
+    <div class="n-widget__col n-widget__col-1-2">
+      <a class="n-widget__link-all" href="#" id="prtrq_allpartrequests">{{get("prtrq_allpartrequests")}}
+        <svg class="n-icon-arrow-circle-o-right n-icon n-icon--default" aria-labelledby="title">
+          <title>arrow-circle-o-right</title>
+          <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="assets/svg/sprite.svg#arrow-circle-o-right"></use>
+        </svg>
+      </a>
+    </div>
+
+    <div class="n-widget__col n-widget__col-1-2 n-widget__col--align-right">
+      <a href="#" class="button button--small" id="prtrq_requestpart">{{get("prtrq_requestpart")}}</a>
+    </div>
+  </section>
+</section>

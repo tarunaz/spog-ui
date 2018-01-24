@@ -1,0 +1,81 @@
+<ng-template [ngIf]="requiredAttrs.templateType === 'bugId'">
+    <form (submit)="filterSubmit($event)">
+      <div class="n-type-ahead n-type-ahead--search js-object-type-ahead n-type-ahead--is-typing spog-suggest" (offClick)="onClickedOutside($event)">
+        <form autocomplete="off">
+  
+          <div class="spog-validation" *ngIf="requiredAttrs.isError">{{requiredAttrs.errorMessage}}</div>
+          <div class="n-type-ahead__action" [ngClass]="{'spinner': isProgress}">
+            <input #searchInput [placeholder]="requiredAttrs.placeHolder" type="text" class="n-type-ahead__input js-behavior-simulate-type-ahead"
+              [(ngModel)]=query name="search">
+            <button (click)="filterSubmit($event)" class="auto-search-btn" title="Click to Search">
+                <svg aria-labelledby="title" class="n-icon-search n-type-ahead__input-icon n-type-ahead__input-icon--search auto-seach">
+                  <title>search</title>
+                  <svg viewBox="0 0 475.09 475.08" id="search" width="100%" height="100%"><path d="M464.524 412.846l-97.929-97.925c23.6-34.068 35.406-72.047 35.406-113.917 0-27.218-5.284-53.249-15.852-78.087-10.561-24.842-24.838-46.254-42.825-64.241-17.987-17.987-39.396-32.264-64.233-42.826C254.246 5.285 228.217.003 200.999.003c-27.216 0-53.247 5.282-78.085 15.847C98.072 26.412 76.66 40.689 58.673 58.676c-17.989 17.987-32.264 39.403-42.827 64.241C5.282 147.758 0 173.786 0 201.004c0 27.216 5.282 53.238 15.846 78.083 10.562 24.838 24.838 46.247 42.827 64.234 17.987 17.993 39.403 32.264 64.241 42.832 24.841 10.563 50.869 15.844 78.085 15.844 41.879 0 79.852-11.807 113.922-35.405l97.929 97.641c6.852 7.231 15.406 10.849 25.693 10.849 9.897 0 18.467-3.617 25.694-10.849 7.23-7.23 10.848-15.796 10.848-25.693.003-10.082-3.518-18.651-10.561-25.694zM291.363 291.358c-25.029 25.033-55.148 37.549-90.364 37.549-35.21 0-65.329-12.519-90.36-37.549-25.031-25.029-37.546-55.144-37.546-90.36 0-35.21 12.518-65.334 37.546-90.36 25.026-25.032 55.15-37.546 90.36-37.546 35.212 0 65.331 12.519 90.364 37.546 25.033 25.026 37.548 55.15 37.548 90.36 0 35.216-12.519 65.331-37.548 90.36z"></path></svg>
+                </svg>
+            </button>
+          </div>
+          <div class="n-type-ahead__menu" *ngIf="filteredList.length > 0" [ngClass]="{'select-list': closeDropdown}">
+            <ul class="n-link-list n-link-list--lg" *ngFor="let item of filteredList">
+              <li class="n-link-list__item">
+                <label class="cb-container">
+                    <input type="checkbox" (change)="select($event, item.name)" title="Check to Select" class="bugSrcAuto"> 
+                    <span class="checkmark" title="Check to Select"></span>
+                </label>
+                <span>
+                   <a class="display-option c-label" (click)="navigate(item.name)" innerHTML="{{ item.name | highlight : lastQuery }}" title="Bug details"></a>
+                </span>
+              </li>
+            </ul>
+          </div>
+  
+          <div class="n-type-ahead__menu" *ngIf="isDataNotFound" [ngClass]="{'select-list': closeDropdown}">
+            <ul class="n-link-list n-link-list--lg">
+              <li class="n-link-list__item">
+                <a class="bug-no-result">No records found</a>
+              </li>
+            </ul>
+          </div>
+  
+        </form>
+      </div>
+    </form>
+  </ng-template>
+  
+  
+  <ng-template [ngIf]="requiredAttrs.templateType === 'bugKey'">
+    <form (submit)="filterSubmit($event)">
+      <div class="n-type-ahead n-type-ahead--search js-object-type-ahead n-type-ahead--is-typing" (offClick)="onClickedOutside($event)">
+        <form autocomplete="off">
+  
+          <div class="spog-validation" *ngIf="requiredAttrs.isError">{{requiredAttrs.errorMessage}}</div>
+          <div class="n-type-ahead__action" [ngClass]="{'spinner': isProgress}">
+            <input #searchInput [placeholder]="requiredAttrs.placeHolder" type="text" class="n-type-ahead__input js-behavior-simulate-type-ahead"
+              [(ngModel)]=query name="search">
+            <button (click)="filterSubmit($event)" class="auto-search-btn" title="Click to Search">
+                <svg aria-labelledby="title" class="n-icon-search n-type-ahead__input-icon n-type-ahead__input-icon--search auto-seach">
+                    <title>search</title>
+                    <svg viewBox="0 0 475.09 475.08" id="search" width="100%" height="100%"><path d="M464.524 412.846l-97.929-97.925c23.6-34.068 35.406-72.047 35.406-113.917 0-27.218-5.284-53.249-15.852-78.087-10.561-24.842-24.838-46.254-42.825-64.241-17.987-17.987-39.396-32.264-64.233-42.826C254.246 5.285 228.217.003 200.999.003c-27.216 0-53.247 5.282-78.085 15.847C98.072 26.412 76.66 40.689 58.673 58.676c-17.989 17.987-32.264 39.403-42.827 64.241C5.282 147.758 0 173.786 0 201.004c0 27.216 5.282 53.238 15.846 78.083 10.562 24.838 24.838 46.247 42.827 64.234 17.987 17.993 39.403 32.264 64.241 42.832 24.841 10.563 50.869 15.844 78.085 15.844 41.879 0 79.852-11.807 113.922-35.405l97.929 97.641c6.852 7.231 15.406 10.849 25.693 10.849 9.897 0 18.467-3.617 25.694-10.849 7.23-7.23 10.848-15.796 10.848-25.693.003-10.082-3.518-18.651-10.561-25.694zM291.363 291.358c-25.029 25.033-55.148 37.549-90.364 37.549-35.21 0-65.329-12.519-90.36-37.549-25.031-25.029-37.546-55.144-37.546-90.36 0-35.21 12.518-65.334 37.546-90.36 25.026-25.032 55.15-37.546 90.36-37.546 35.212 0 65.331 12.519 90.364 37.546 25.033 25.026 37.548 55.15 37.548 90.36 0 35.216-12.519 65.331-37.548 90.36z"></path></svg>
+                </svg>
+            </button>
+          </div>
+  
+          <div class="n-type-ahead__menu" *ngIf="filteredList.length > 0" [ngClass]="{'select-list': closeDropdown}">
+            <ul class="n-link-list n-link-list--lg" *ngFor="let item of filteredList">
+              <li class="n-link-list__item">
+                <a class="display-option hand-symbol" (click)="navigate(item.name)" innerHTML="{{ item.name | highlight : lastQuery }}" title="Bug details"></a>
+                <br>
+              </li>
+            </ul>
+          </div>
+          <div class="n-type-ahead__menu" *ngIf="isDataNotFound" [ngClass]="{'select-list': closeDropdown}">
+            <ul class="n-link-list n-link-list--lg">
+              <li class="n-link-list__item">
+                <a class="bug-no-result">No records found</a>
+              </li>
+            </ul>
+          </div>
+  
+        </form>
+      </div>
+    </form>
+  </ng-template>

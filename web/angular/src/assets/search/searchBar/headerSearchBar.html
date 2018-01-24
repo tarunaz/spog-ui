@@ -1,0 +1,175 @@
+
+<!-- saved from url=(0070)https://mysupport-stg.netapp.com/search/searchBar/headerSearchBar.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><link rel="stylesheet" type="text/css" media="all" href="./headerSearchBar_files/headerSearch.css">
+<link rel="stylesheet" href="../../css/netapp-library.min.css">
+</head><body><div class="searchBarWrapper" style="height: 40px;">
+  <form method="get" class="headerSearchForm" action="/search" target="_parent" id="header_suggestion_form" onsubmit="return submitSAHeaderSearchForm();" autocomplete="off"> <!-- onsubmit="javascript: submitSAHeaderSearchForm(); return false;" -->
+    <div class="searchBar">
+      <input class="headerSearchInput n-search-form__input" id="headerSearchInput" type="text" name="q" placeholder="I need support on..." onfocus="javascipt: handleFocusQuery(); " onkeyup="ss_form_element = &#39;header_suggestion_form&#39;; ss_popup_element = &#39;header_search_suggest&#39;; ss_handleKey(event);" onkeypress="showCloseIcon()">
+
+      <button class="n-search-form__button" type="submit" id="searchButton">
+        <svg class="n-icon-search n-search-form__button-icon" aria-labelledby="title">
+          <title>search</title>
+          <use xlink="http://www.w3.org/1999/xlink" xlink:href="../../svg/sprite.svg#search"></use>
+        </svg>
+        <span class="n-search-form__button-text">Search</span>
+
+      </button>
+      <a class="clearIcon" onclick="onClickCloseIcon();">
+        <img class="clearButton" style="display:none" id="close_icon" title="Clear" src="./headerSearchBar_files/close-icon.png">
+      </a>
+      <!-- <img class="searchButton" src="/search/searchBar/img/btnSearch.png" onclick="ss_form_element = 'header_suggestion_form';ss_popup_element = 'header_search_suggest'; srchSubmit();"> -->
+      <!-- <input type="image" src="/search/searchBar/img/btnSearch.png" alt="Submit" width="30" height="27" class="searchButton"> -->
+      <!--<input type="submit"  value=""/>-->
+    </div>
+    <div class="searchPopUp" id="header_search_suggest_main" style="display: none; z-index: auto;">
+      <table class="popUpTable">
+        <tbody>
+          <tr class="suggestionsAndFiltersRow">
+            <td class="suggestionsColumn">
+              <table class="suggestionsTable" id="header_search_suggest">
+                <tbody>
+
+                </tbody>
+              </table>
+            </td>
+            <td class="filtersColumn">
+              <table class="filtersTable" id="header_search_suggest_cat">
+                <tbody>
+                <tr>
+                  <td>
+                    <p class="filterByCat">
+                      <b>Filter by Categories:</b>
+                    </p>
+                  </td>
+                </tr>
+                <tr id="allRow">
+                  <td class="filterCol">
+                    <label class="n-form__checkbox n-search-filter__refine-checkbox" for="srchac">
+                      <input id="srchac" name="" type="checkbox" checked="true" class="n-form__checkbox-input" value="false" onclick="javascript:handleAllChckBoxes()">
+                        <span class="n-form__checkbox-visual">
+                          <svg class="n-icon-check n-form__checkbox-checked-icon" aria-labelledby="title">
+                            <title>check</title>
+                            <use xlink="http://www.w3.org/1999/xlink" xlink:href="../../svg/sprite.svg#check"></use>
+                          </svg>
+                        </span>
+                      <span class="n-form__checkbox-text ">All Categories</span>
+                    </label>
+                    <!--<input class="filterInp" type="checkbox" id="srchac" checked="true" onclick="javascript:handleAllChckBoxes()">-->
+                    <!--&nbsp;All Categories-->
+                  </td>
+                </tr>
+                <tr id="docRow">
+                  <td class="filterCol">
+                    <label class="n-form__checkbox n-search-filter__refine-checkbox" for="srchpd">
+                      <input id="srchpd" name="" type="checkbox" class="n-form__checkbox-input" value="false" onclick="javascript:handleChckBoxes(&#39;#srchpd&#39;)">
+                        <span class="n-form__checkbox-visual">
+                          <svg class="n-icon-check n-form__checkbox-checked-icon" aria-labelledby="title">
+                            <title>check</title>
+                            <use xlink="http://www.w3.org/1999/xlink" xlink:href="../../svg/sprite.svg#check"></use>
+                          </svg>
+                        </span>
+                      <span class="n-form__checkbox-text ">Documentation</span>
+                    </label>
+                    <!--<input class="filterInp" type="checkbox" id="srchpd" onclick="javascript:handleChckBoxes('#srchpd')">-->
+                    <!--&nbsp;Documentation-->
+                  </td>
+                </tr>
+                <tr id="clRow">
+                  <td class="filterCol">
+                    <label class="n-form__checkbox n-search-filter__refine-checkbox" for="srchcl">
+                      <input id="srchcl" name="" type="checkbox" class="n-form__checkbox-input" value="false" onclick="javascript:handleChckBoxes(&#39;#srchcl&#39;)">
+                        <span class="n-form__checkbox-visual">
+                          <svg class="n-icon-check n-form__checkbox-checked-icon" aria-labelledby="title">
+                            <title>check</title>
+                            <use xlink="http://www.w3.org/1999/xlink" xlink:href="../../svg/sprite.svg#check"></use>
+                          </svg>
+                        </span>
+                      <span class="n-form__checkbox-text ">Command Line</span>
+                    </label>
+                    <!--<input class="filterInp" type="checkbox" id="srchcl" onclick="javascript:handleChckBoxes('#srchcl')">-->
+                    <!--&nbsp;Command Line-->
+                  </td>
+                </tr>
+                <tr id="kbRow">
+                  <td class="filterCol">
+                    <label class="n-form__checkbox n-search-filter__refine-checkbox" for="srchkb">
+                      <input id="srchkb" name="" type="checkbox" class="n-form__checkbox-input" value="false" onclick="javascript:handleChckBoxes(&#39;#srchkb&#39;)">
+                        <span class="n-form__checkbox-visual">
+                          <svg class="n-icon-check n-form__checkbox-checked-icon" aria-labelledby="title">
+                            <title>check</title>
+                            <use xlink="http://www.w3.org/1999/xlink" xlink:href="../../svg/sprite.svg#check"></use>
+                          </svg>
+                        </span>
+                      <span class="n-form__checkbox-text ">Knowledgebase</span>
+                    </label>
+                    <!--<input class="filterInp" type="checkbox" id="srchkb" onclick="javascript:handleChckBoxes('#srchkb')">-->
+                    <!--&nbsp;Knowledgebase-->
+                  </td>
+                </tr>
+                <tr id="bugRow" style="display: none;">
+                  <td class="filterCol">
+                    <label class="n-form__checkbox n-search-filter__refine-checkbox" for="srchbugs">
+                      <input id="srchbugs" name="" type="checkbox" class="n-form__checkbox-input" value="false" onclick="javascript:handleChckBoxes(&#39;#srchbugs&#39;)">
+                        <span class="n-form__checkbox-visual">
+                          <svg class="n-icon-check n-form__checkbox-checked-icon" aria-labelledby="title">
+                            <title>check</title>
+                            <use xlink="http://www.w3.org/1999/xlink" xlink:href="../../svg/sprite.svg#check"></use>
+                          </svg>
+                        </span>
+                      <span class="n-form__checkbox-text ">Bugs</span>
+                    </label>
+                    <!--<input class="filterInp" type="checkbox" id="srchbugs" onclick="javascript:handleChckBoxes('#srchbugs')">-->
+                    <!--&nbsp;Bugs-->
+                  </td>
+                </tr>
+                <tr id="commRow">
+                  <td class="filterCol">
+                    <label class="n-form__checkbox n-search-filter__refine-checkbox" for="srchcomm">
+                      <input id="srchcomm" name="" type="checkbox" class="n-form__checkbox-input" value="false" onclick="javascript:handleChckBoxes(&#39;#srchcomm&#39;)">
+                        <span class="n-form__checkbox-visual">
+                          <svg class="n-icon-check n-form__checkbox-checked-icon" aria-labelledby="title">
+                            <title>check</title>
+                            <use xlink="http://www.w3.org/1999/xlink" xlink:href="../../svg/sprite.svg#check"></use>
+                          </svg>
+                        </span>
+                      <span class="n-form__checkbox-text ">Community</span>
+                    </label>
+                    <!--<input class="filterInp" type="checkbox" id="srchcomm" onclick="javascript:handleChckBoxes('#srchcomm')">-->
+                    <!--&nbsp;Community-->
+                  </td>
+                </tr>
+                <tr class="closeRow">
+                  <td class="closeCol">
+                    <button type="button" class="closeButton button" id="close">
+                      Close
+                    </button>
+                  </td>
+                </tr>
+                </tbody>
+              </table>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  <input type="hidden" name="sort" value="rel">
+  <input type="hidden" name="start" value="0">
+	<input type="hidden" name="access" value="p">
+	<input type="hidden" name="client" value="public">
+  <input type="hidden" name="site" value="gspub">
+	<input type="hidden" name="requiredfields" value="">
+  <input type="hidden" name="partialfields" value="">
+  <input type="hidden" name="exp" value="def">
+  </form>
+</div>
+<script type="text/javascript" src="./headerSearchBar_files/jquery-1.11.3.js.download"></script>
+<script type="text/javascript" src="./headerSearchBar_files/headerSearch.js.download"></script>
+<script type="text/javascript" src="./headerSearchBar_files/components.js.download"></script>
+<script type="text/javascript" src="./headerSearchBar_files/common.js.download"></script>
+<script type="text/javascript" src="./headerSearchBar_files/xmlhttp.js.download"></script>
+<script type="text/javascript" src="./headerSearchBar_files/uri.js.download"></script>
+<script type="text/javascript" src="./headerSearchBar_files/ss_vars.js.download"></script>
+<script type="text/javascript" src="./headerSearchBar_files/ss.js.download"></script>
+<script type="text/javascript" src="./headerSearchBar_files/logCheck.js.download"></script>
+</body></html>

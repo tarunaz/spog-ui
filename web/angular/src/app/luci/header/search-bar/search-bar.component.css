@@ -1,0 +1,20 @@
+.srchIframe {
+    border-radius: 6px;
+    visibility: visible;
+    height: 40px;
+    z-index: auto;
+    margin-top: 0;
+    width: 492px;
+    position: relative;
+    border: none;
+}
+
+.searchSec{
+    position: absolute;
+    right: 5px;
+    top: 20px;
+}
+
+@media screen and (max-width: 767px) {
+    
+}

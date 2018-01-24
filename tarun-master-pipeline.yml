@@ -1,0 +1,41 @@
+apiVersion: v1
+kind: BuildConfig
+metadata:
+  labels:
+    build: tarun-spog
+    provider: pengg
+    template: pengg-runtime-bc-spog
+  name: tarun-spog-master-pipeline
+  namespace: nss
+spec:
+  nodeSelector: null
+  output: {}
+  postCommit: {}
+  resources: {}
+  runPolicy: Serial
+  source:
+    contextDir: jenkins
+    git:
+      ref: master
+      uri: 'git@github.com:tarunaz/spog-ui.git'
+    sourceSecret:
+      name: tarun-spog-master
+    type: Git
+  strategy:
+    jenkinsPipelineStrategy:
+      jenkinsfilePath: spogDev1Pipeline.groovy
+    type: JenkinsPipeline
+  triggers:
+    - imageChange:
+        from:
+          kind: ImageStreamTag
+          name: 'pengg-s2i-node-angular:latest'
+          namespace: pengg
+        lastTriggeredImageID: >-
+          172.20.84.246:5000/pengg/pengg-s2i-node-angular@sha256:3a9d756e3ddba52dd390b6965e4f983757fee49a931bfab261bdbad4d363930b
+      type: ImageChange
+    - type: ConfigChange
+    - generic:
+        secret: WpavBRRSD4
+      type: Generic
+

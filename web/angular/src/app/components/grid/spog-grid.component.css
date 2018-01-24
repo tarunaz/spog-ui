@@ -1,0 +1,13 @@
+.error-block{
+    display: flex;
+    margin-left: 17%;
+}
+.button{
+    padding: 5px;
+    height:30px;
+    width:80px;
+    font-size :14px;
+    text-align:center;
+    text-transform:none;
+    vertical-align:middle;
+}

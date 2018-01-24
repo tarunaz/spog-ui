@@ -1,0 +1,63 @@
+<div class="n-doc-item" *ngIf="(hideNoticeBar && noticeData && noticeData.length > 0)">
+  <div class="n-notice js-object-notice">
+    <div class="n-container">
+      <ul class="n-notice__table">
+        <li class="n-notice__cell n-notice__cell--action">
+          <button (click)='animationright = true; prevItem()' class="button button--clean n-notice__button js-behavior-page-notice" data-direction="previous">
+            <svg class="n-icon-chevron-left n-icon n-icon--default" aria-labelledby="title">
+              <title>chevron-left</title>
+              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="assets/svg/sprite.svg#chevron-left"></use>
+            </svg>
+          </button>          
+        </li>
+        <li class="n-notice__cell">
+          <ul class="n-notice__frame">
+            <li class="n-notice__slide n-notice__slide--is-active js-object-notice-slide" 
+            [ngClass]="{'n-notice__slide--slide-in-right': animationleft, ' n-notice__slide--slide-in-left': animationright}" >
+                 <div class="n-notice__content" >
+                  
+                    <svg *ngIf="(complaints && complaints.type=='infoflash')" class="n-icon-circle-exclamation n-icon n-icon--default n-notice__icon" aria-labelledby="title">
+                      <title>circle-exclamation</title>
+                      <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="assets/svg/sprite.svg#circle-exclamation"></use>
+                    </svg>
+                    <svg *ngIf="(complaints && complaints.type=='headline')" class="n-icon-bullhorn n-icon n-icon--default n-notice__icon" aria-labelledby="title">
+                        <title>bullhorn</title>
+                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="assets/svg/sprite.svg#bullhorn"></use>
+                    </svg>
+                    <svg *ngIf="(complaints && complaints.type=='announcement')" class="n-icon-lightbulb-o n-icon n-icon--default n-notice__icon" aria-labelledby="title">
+                        <title>lightbulb-o</title>
+                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="assets/svg/sprite.svg#lightbulb-o"></use>
+                    </svg>                                                                                   
+                  </div> 
+                  <span class="displayData" [innerHTML]="complaints.message"> </span>
+            </li>
+          </ul>
+        </li>
+
+        <li class="n-notice__cell n-notice__cell--slide-number">
+          <span class="n-slide-number">(
+            <span class="js-object-notice-slide-current" innerHTML= "{{currentItem + 1}}"></span> of
+             <span class="js-object-notice-slide-total" innerHTML= "{{ noticeData.length }}"></span>) 
+          </span>
+        </li>
+      
+        <li class="n-notice__cell n-notice__cell--action">
+          <button   (click)='animationleft = true; nextItem()'  class="button button--clean n-notice__button js-behavior-page-notice" data-direction="next">
+            <svg class="n-icon-chevron-right n-icon n-icon--default" aria-labelledby="title" >
+              <title>chevron-right</title>
+              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="assets/svg/sprite.svg#chevron-right"></use>
+            </svg>
+          </button>
+        </li>
+        <li class="n-notice__cell n-notice__cell--action">
+          <button (click)='closeNoticeBar()'class="button button--clean n-notice__button js-behavior-dismiss-notice">
+            <svg class="n-icon-close n-icon n-icon--default" aria-labelledby="title">
+              <title>close</title>
+              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="assets/svg/sprite.svg#close"></use>
+            </svg>
+          </button>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

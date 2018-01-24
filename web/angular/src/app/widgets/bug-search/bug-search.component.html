@@ -1,0 +1,50 @@
+<div class="n-widget__content bug-search">
+  <div class="n-widget__title">
+    <div class="n-widget__row n-widget__row--valign-center n-widget__row--nowrap">
+      <div class="n-widget__col">
+        <h4 class="n-widget__title-heading" id = "bugsrh_bugsearch">{{get("bugsrh_bugsearch")}}</h4>
+      </div>
+
+      <div class="n-widget__col n-widget__col-icon">
+          <svg aria-labelledby="title" class="n-icon-arrows n-icon n-icon--default n-widget__icon-move">
+              <title>arrows</title>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 14" id="arrows" width="100%" height="100%"><path d="M14 7q0 .203-.148.352l-2 2q-.148.148-.352.148t-.352-.148T11 9V8H8v3h1q.203 0 .352.148t.148.352-.148.352l-2 2Q7.204 14 7 14t-.352-.148l-2-2Q4.5 11.704 4.5 11.5t.148-.352T5 11h1V8H3v1q0 .203-.148.352T2.5 9.5t-.352-.148l-2-2Q0 7.204 0 7t.148-.352l2-2Q2.296 4.5 2.5 4.5t.352.148T3 5v1h3V3H5q-.203 0-.352-.148T4.5 2.5t.148-.352l2-2Q6.796 0 7 0t.352.148l2 2q.148.148.148.352t-.148.352T9 3H8v3h3V5q0-.203.148-.352T11.5 4.5t.352.148l2 2Q14 6.796 14 7z"></path></svg>
+          </svg>
+      </div>
+    </div>
+  </div>
+
+  <div class="n-widget__heading">
+    <h6 id ="bugsrh_searchbyid">{{get("bugsrh_searchbyid")}}</h6>
+  </div>
+
+  <app-spog-autocomplete [requiredAttrs]="requiredAttrsBugId" [filteredList]='bugIdFilteredList' (search)='bugIdSearch($event)'
+    (submit)='bugIdSubmit($event)' [isProgress]="isIdsProgress" (linkClick)='bugIdLinkClick($event)'>
+  </app-spog-autocomplete>
+
+  <div class="n-widget__heading">
+    <h6 id = "bugsrh_searchbykey">{{get("bugsrh_searchbykey")}}</h6>
+  </div>
+
+  <app-spog-autocomplete [requiredAttrs]="requiredAttrsKeyWord" [filteredList]='keyFilteredList' (search)='keyWordSearch($event)'
+    (submit)='keyWordSubmit($event)' [isProgress]="isKeysProgress" (linkClick)='keyWordLinkClick($event)'>
+  </app-spog-autocomplete>
+
+
+  <div class="n-widget__row n-widget__row--valign-center">
+    <div class="n-widget__col n-widget__col-1-2">
+      <a class="n-widget__link-all" [href]="allBugToolsUrl" target="_blank"id = "bugsrh_allbugtools">{{get("bugsrh_allbugtools")}}
+          <svg aria-labelledby="title" class="n-icon-arrow-circle-o-right n-icon n-icon--default">
+              <title>arrow-circle-o-right</title>
+              <svg viewBox="0 0 438.53 438.53" id="arrow-circle-o-right" width="100%" height="100%">
+                <path d="M409.133 109.203c-19.608-33.592-46.205-60.189-79.798-79.796C295.736 9.801 259.058 0 219.273 0c-39.781 0-76.47 9.801-110.063 29.407-33.595 19.604-60.192 46.201-79.8 79.796C9.801 142.8 0 179.489 0 219.267c0 39.78 9.804 76.463 29.407 110.062 19.607 33.592 46.204 60.189 79.799 79.798 33.597 19.605 70.283 29.407 110.063 29.407s76.47-9.802 110.065-29.407c33.593-19.602 60.189-46.206 79.795-79.798 19.603-33.596 29.403-70.284 29.403-110.062.001-39.782-9.8-76.472-29.399-110.064zm-55.391 188.005c-13.894 23.791-32.736 42.64-56.527 56.534-23.791 13.894-49.771 20.834-77.945 20.834-28.167 0-54.149-6.94-77.943-20.834-23.791-13.895-42.633-32.743-56.527-56.534-13.897-23.791-20.843-49.772-20.843-77.941 0-28.171 6.949-54.152 20.843-77.943 13.891-23.791 32.738-42.637 56.527-56.53 23.791-13.895 49.772-20.84 77.943-20.84 28.173 0 54.154 6.945 77.945 20.84 23.791 13.894 42.634 32.739 56.527 56.53 13.895 23.791 20.838 49.772 20.838 77.943 0 28.169-6.943 54.15-20.838 77.941z"></path>
+                <path d="M235.257 121.619c-2.282-1.903-4.568-2.847-6.852-2.847-2.669 0-4.853.854-6.57 2.568-1.706 1.709-2.565 3.899-2.565 6.567v54.818H118.773c-2.473 0-4.615.9-6.423 2.712-1.807 1.807-2.712 3.949-2.712 6.424v54.815c0 2.475.905 4.617 2.712 6.424 1.809 1.811 3.947 2.707 6.423 2.707h100.5v54.823c0 2.474.903 4.616 2.705 6.423 1.815 1.811 3.956 2.707 6.427 2.707 2.666 0 4.856-.852 6.564-2.563l91.364-91.361c1.715-1.711 2.57-3.901 2.57-6.565 0-2.666-.855-4.853-2.573-6.571l-91.073-91.081z"></path></svg>
+            </svg>
+      </a>
+    </div>
+
+    <div class="n-widget__col n-widget__col-1-2 n-widget__col--align-right">
+
+    </div>
+  </div>
+</div>

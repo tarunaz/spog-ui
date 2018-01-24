@@ -1,0 +1,349 @@
+<div class="n-widget__content">
+  <div class="n-widget__title">
+    <div class="n-widget__row n-widget__row--valign-center n-widget__row--nowrap">
+      <div class="n-widget__col">
+        <h4 class="n-widget__title-heading">Software Downloads</h4>
+      </div>
+
+      <div class="n-widget__col n-widget__col-icon">
+        <svg class="n-icon-arrows n-icon n-icon--default n-widget__icon-move" aria-labelledby="title">
+          <title>arrows</title>
+          <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="assets/svg/sprite.svg#autosupport"></use>
+        </svg>
+      </div>
+    </div>
+  </div>
+<!-- -->
+<app-widget-dropdown [softwareList]="softwareDownloadList" [placeHolderTxt]="placeHolderText" [showDropDown]="showWidgetDropDown" (onSoftwareListSelectEvent)="onSoftwareSelect($event)"></app-widget-dropdown>
+<app-widget-dropdown *ngIf="isSoftwareSelected" [softwareList]="platformList" [placeHolderTxt]="pltPlaceHolderText" [showDropDown]="showWidgetDropDown" (onPlatformListSelectEvent)="onPlatformSelect($event)"></app-widget-dropdown>
+<app-widget-dropdown *ngIf="isPlatformSelected" [softwareList]="versionList" [placeHolderTxt]="verPlaceHolderText" [showDropDown]="showWidgetDropDown" (onVersionListSelectEvent)="onVersionSelect($event)"></app-widget-dropdown>
+<!--
+  <div class="n-type-ahead js-object-type-ahead">
+    <div class="n-type-ahead__action">
+      <input type="text" placeholder="Select Software to Download" class="n-type-ahead__input js-behavior-simulate-type-ahead">
+      <svg class="n-icon-chevron-down n-type-ahead__input-icon" aria-labelledby="title">
+        <title>chevron-down</title>
+        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="assets/svg/sprite.svg#chevron-down"></use>
+      </svg>
+    </div>
+
+    <div class="n-type-ahead__menu">
+      <ul class="n-link-list n-link-list--lg">
+        <li class="n-link-list__item n-link-list__item--heading">
+          Platform OS
+        </li>
+        <li class="n-link-list__item">
+          <a class="n-link-list__link js-behavior-show-type-ahead-step" data-target="2" href="#">ONTAP</a>
+        </li>
+        <li class="n-link-list__item">
+          <a class="n-link-list__link js-behavior-show-type-ahead-step" data-target="2" href="#">Data ONTAP 7-Mode</a>
+        </li>
+        <li class="n-link-list__item">
+          <a class="n-link-list__link js-behavior-show-type-ahead-step" data-target="2" href="#">E-Series / EF-Series</a>
+        </li>
+        <li class="n-link-list__item">
+          <a class="n-link-list__link js-behavior-show-type-ahead-step" data-target="2" href="#">SolidFire</a>
+        </li>
+        <li class="n-link-list__item">
+          <a class="n-link-list__link js-behavior-show-type-ahead-step" data-target="2" href="#">ONTAP Cloud</a>
+        </li>
+        <li class="n-link-list__item">
+          <a class="n-link-list__link js-behavior-show-type-ahead-step" data-target="2" href="#">ONTAP Select</a>
+        </li>
+        <li class="n-link-list__item">
+          <a class="n-link-list__link js-behavior-show-type-ahead-step" data-target="2" href="#">Transition</a>
+        </li>
+        <li class="n-link-list__item">
+          <a class="n-link-list__link js-behavior-show-type-ahead-step" data-target="2" href="#">Brocade</a>
+        </li>
+      </ul>
+
+      <ul class="n-link-list n-link-list--lg">
+        <li class="n-link-list__item n-link-list__item--heading">
+          Management Software
+        </li>
+        <li class="n-link-list__item">
+          <a class="n-link-list__link js-behavior-show-type-ahead-step" data-target="2" href="#">
+            <mark class="n-link-list__mark">Snap</mark>Drive / SnapManager</a>
+        </li>
+        <li class="n-link-list__item">
+          <a class="n-link-list__link js-behavior-show-type-ahead-step" data-target="2" href="#">Snap
+            <mark class="n-link-list__mark">Center</mark>
+          </a>
+        </li>
+        <li class="n-link-list__item">
+          <a class="n-link-list__link js-behavior-show-type-ahead-step" data-target="2" href="#">Vir
+            <mark class="n-link-list__mark">tualiz</mark>ation</a>
+        </li>
+        <li class="n-link-list__item">
+          <a class="n-link-list__link js-behavior-show-type-ahead-step" data-target="2" href="#">
+            <mark class="n-link-list__mark">OnComm</mark>and</a>
+        </li>
+        <li class="n-link-list__item">
+          <a class="n-link-list__link js-behavior-show-type-ahead-step" data-target="2" href="#">
+            <mark class="n-link-list__mark">ONTAP</mark> Cloud</a>
+        </li>
+        <li class="n-link-list__item">
+          <a class="n-link-list__link js-behavior-show-type-ahead-step" data-target="2" href="#">
+            <mark class="n-link-list__mark">ONTA</mark>P Select</a>
+        </li>
+        <li class="n-link-list__item">
+          <a class="n-link-list__link js-behavior-show-type-ahead-step" data-target="2" href="#">Tra
+            <mark class="n-link-list__mark">nsitio</mark>n</a>
+        </li>
+        <li class="n-link-list__item">
+          <a class="n-link-list__link js-behavior-show-type-ahead-step" data-target="2" href="#">Bro
+            <mark class="n-link-list__mark">cad</mark>e</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+-->
+  <div class="n-type-ahead js-object-type-ahead js-object-type-ahead-step" data-id="2" style="display:none;">
+    <div class="n-type-ahead__action">
+      <input type="text" placeholder="Select Platform" class="n-type-ahead__input js-behavior-simulate-type-ahead">
+      <svg class="n-icon-chevron-down n-type-ahead__input-icon" aria-labelledby="title">
+        <title>chevron-down</title>
+        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="assets/svg/sprite.svg#chevron-down"></use>
+      </svg>
+    </div>
+
+    <div class="n-type-ahead__menu">
+      <ul class="n-link-list n-link-list--lg">
+        <li class="n-link-list__item n-link-list__item--heading">
+          Platform OS
+        </li>
+        <li class="n-link-list__item">
+          <a class="n-link-list__link js-behavior-show-type-ahead-step" data-target="3" href="#">ONTAP</a>
+        </li>
+        <li class="n-link-list__item">
+          <a class="n-link-list__link js-behavior-show-type-ahead-step" data-target="3" href="#">Data ONTAP 7-Mode</a>
+        </li>
+        <li class="n-link-list__item">
+          <a class="n-link-list__link js-behavior-show-type-ahead-step" data-target="3" href="#">E-Series / EF-Series</a>
+        </li>
+        <li class="n-link-list__item">
+          <a class="n-link-list__link js-behavior-show-type-ahead-step" data-target="3" href="#">SolidFire</a>
+        </li>
+        <li class="n-link-list__item">
+          <a class="n-link-list__link js-behavior-show-type-ahead-step" data-target="3" href="#">ONTAP Cloud</a>
+        </li>
+        <li class="n-link-list__item">
+          <a class="n-link-list__link js-behavior-show-type-ahead-step" data-target="3" href="#">ONTAP Select</a>
+        </li>
+        <li class="n-link-list__item">
+          <a class="n-link-list__link js-behavior-show-type-ahead-step" data-target="3" href="#">Transition</a>
+        </li>
+        <li class="n-link-list__item">
+          <a class="n-link-list__link js-behavior-show-type-ahead-step" data-target="3" href="#">Brocade</a>
+        </li>
+      </ul>
+
+      <ul class="n-link-list n-link-list--lg">
+        <li class="n-link-list__item n-link-list__item--heading">
+          Management Software
+        </li>
+        <li class="n-link-list__item">
+          <a class="n-link-list__link js-behavior-show-type-ahead-step" data-target="3" href="#">
+            <mark class="n-link-list__mark">SnapDri</mark>ve / SnapManager</a>
+        </li>
+        <li class="n-link-list__item">
+          <a class="n-link-list__link js-behavior-show-type-ahead-step" data-target="3" href="#">SnapC
+            <mark class="n-link-list__mark">enter</mark>
+          </a>
+        </li>
+        <li class="n-link-list__item">
+          <a class="n-link-list__link js-behavior-show-type-ahead-step" data-target="3" href="#">Vir
+            <mark class="n-link-list__mark">tualiz</mark>ation</a>
+        </li>
+        <li class="n-link-list__item">
+          <a class="n-link-list__link js-behavior-show-type-ahead-step" data-target="3" href="#">
+            <mark class="n-link-list__mark">OnCom</mark>mand</a>
+        </li>
+        <li class="n-link-list__item">
+          <a class="n-link-list__link js-behavior-show-type-ahead-step" data-target="3" href="#">
+            <mark class="n-link-list__mark">ONTA</mark>P</a>
+        </li>
+        <li class="n-link-list__item">
+          <a class="n-link-list__link js-behavior-show-type-ahead-step" data-target="3" href="#">
+            <mark class="n-link-list__mark">ONT</mark>AP Cloud</a>
+        </li>
+        <li class="n-link-list__item">
+          <a class="n-link-list__link js-behavior-show-type-ahead-step" data-target="3" href="#">ONT
+            <mark class="n-link-list__mark">AP Sele</mark>ct</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="n-type-ahead js-object-type-ahead js-object-type-ahead-step" data-id="3" style="display:none;">
+    <div class="n-type-ahead__action">
+      <input type="text" placeholder="See All Versions" class="n-type-ahead__input js-behavior-simulate-type-ahead">
+      <svg class="n-icon-chevron-down n-type-ahead__input-icon" aria-labelledby="title">
+        <title>chevron-down</title>
+        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="assets/svg/sprite.svg#chevron-down"></use>
+      </svg>
+    </div>
+
+    <div class="n-type-ahead__menu">
+      <ul class="n-link-list n-link-list--lg">
+        <li class="n-link-list__item n-link-list__item--heading n-link-list__item--default-selected">
+          <a class="n-link-list__link" href="#">See All Versions</a>
+        </li>
+        <li class="n-link-list__item">
+          <a class="n-link-list__link" href="#">4.
+            <mark class="n-link-list__mark">0.1</mark>
+          </a>
+        </li>
+        <li class="n-link-list__item">
+          <a class="n-link-list__link" href="#">5.
+            <mark class="n-link-list__mark">0.0</mark>
+          </a>
+        </li>
+        <li class="n-link-list__item">
+          <a class="n-link-list__link" href="#">
+            <mark class="n-link-list__mark">5.3</mark>.0</a>
+        </li>
+        <li class="n-link-list__item">
+          <a class="n-link-list__link" href="#">
+            <mark class="n-link-list__mark">8.0</mark>.0</a>
+        </li>
+        <li class="n-link-list__item">
+          <a class="n-link-list__link" href="#">
+            <mark class="n-link-list__mark">10</mark>.12.1</a>
+        </li>
+        <li class="n-link-list__item">
+          <a class="n-link-list__link" href="#">
+            <mark class="n-link-list__mark">10.12</mark>.4</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="n-widget__row js-object-type-ahead-step" data-id="3" style="display:none;">
+    <div class="n-widget__col n-widget__col--align-right">
+      <button class="button button--small js-behavior-simulate-loader">
+        Find Results
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="n-widget__stats">
+  <h5>
+    Recommended Upgrades (ONTAP)
+    <span class="n-tooltip js-behavior-toggle-tooltip">
+      <span class="n-tooltip__content">
+        4 Recommended Upgrades
+      </span>
+      <button class="button button--clean">
+        <svg class="n-icon-question-circle n-icon n-icon--default" aria-labelledby="title">
+          <title>question-circle</title>
+          <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="assets/svg/sprite.svg#question-circle"></use>
+        </svg>
+      </button>
+    </span>
+  </h5>
+
+  <div class="n-widget__row">
+    <div class="n-widget__col n-widget__col-1-2">
+      <dl class="n-widget__stats-stat">
+        <dt class="n-widget__stats-term">
+          <a href="#">ONTAP</a>
+        </dt>
+        <dd class="n-widget__stats-definition">
+          5 of 200 (2.5%)
+        </dd>
+      </dl>
+      <dl class="n-widget__stats-stat">
+        <dt class="n-widget__stats-term">
+          <a href="#">System Firmware</a>
+        </dt>
+        <dd class="n-widget__stats-definition">
+          12 of 200 (6%)
+        </dd>
+      </dl>
+    </div>
+
+    <div class="n-widget__col n-widget__col-1-2">
+      <dl class="n-widget__stats-stat">
+        <dt class="n-widget__stats-term">
+          <a href="#">Disc</a>
+        </dt>
+        <dd class="n-widget__stats-definition">
+          12080 of 50,713 (23.82%)
+        </dd>
+      </dl>
+      <dl class="n-widget__stats-stat">
+        <dt class="n-widget__stats-term">
+          <a href="#">Shelves</a>
+        </dt>
+        <dd class="n-widget__stats-definition">
+          2946 of 4578 (64.35%)
+        </dd>
+      </dl>
+    </div>
+  </div>
+</div>
+
+<div class="n-widget__content">
+  <div class="n-widget__heading">
+    <h6>All Downloads</h6>
+  </div>
+
+  <div class="n-widget__row">
+    <div class="n-widget__col n-widget__col-1-2">
+      <ul class="n-link-list n-link-list--lg">
+        <li class="n-link-list__item n-link-list__item--heading">
+          <a class="n-link-list__link" href="#">Software</a>
+        </li>
+        <li class="n-link-list__item">
+          Find available downloads, license keys and MIBs
+        </li>
+      </ul>
+
+      <ul class="n-link-list n-link-list--lg">
+        <li class="n-link-list__item n-link-list__item--heading">
+          <a class="n-link-list__link" href="#">Product Evaluation</a>
+        </li>
+        <li class="n-link-list__item">
+          Try before you buy
+        </li>
+      </ul>
+    </div>
+    <div class="n-widget__col n-widget__col-1-2">
+      <ul class="n-link-list n-link-list--lg">
+        <li class="n-link-list__item n-link-list__item--heading">
+          <a class="n-link-list__link" href="#">Firmware</a>
+        </li>
+        <li class="n-link-list__item">
+          <a class="n-link-list__link" href="#">System Firmware &amp; Diagnostics</a>
+        </li>
+        <li class="n-link-list__item">
+          <a class="n-link-list__link" href="#">Disk Drive &amp; Firmware Matrix</a>
+        </li>
+        <li class="n-link-list__item">
+          <a class="n-link-list__link" href="#">RLM Firmware</a>
+        </li>
+        <li class="n-link-list__item">
+          <a class="n-link-list__link" href="#">Disc Shelf Firmware</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="n-widget__row n-widget__row--valign-center">
+    <div class="n-widget__col n-widget__col-1-2">
+      <a class="n-widget__link-all" href="#">All Software
+        <svg class="n-icon-arrow-circle-o-right n-icon n-icon--default" aria-labelledby="title">
+          <title>arrow-circle-o-right</title>
+          <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="assets/svg/sprite.svg#arrow-circle-o-right"></use>
+        </svg>
+      </a>
+    </div>
+
+    <div class="n-widget__col n-widget__col-1-2 n-widget__col--align-right">
+
+    </div>
+  </div>
+</div>

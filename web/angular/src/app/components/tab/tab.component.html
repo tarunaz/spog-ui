@@ -1,0 +1,18 @@
+
+
+<div id="tabcontainer" class="n-compact-tabs js-object-compact-tabs">
+  <ul class="n-compact-tabs__row" id ="mobile-content">
+      <li class="n-compact-tabs__item">
+          <span class="n-compact-tabs__label">View by:</span>
+      </li>    
+      <li   *ngFor="let content of tabs; let i = index" class="n-compact-tabs__item" >
+          <button name="tabbutton" class="n-compact-tabs__tab" [class.n-compact-tabs__tab--is-active]="i==0" 
+           (click)="loadComponent(content.data.index); set();setStyle($event);">
+              {{ content.data.name }}
+            </button>
+      </li>
+  </ul>
+  <div id="form"> <ng-template  tab-host> </ng-template></div>
+  <div class="n-compact-tabs__tab-content" style="display:block;">
+  </div>
+</div>

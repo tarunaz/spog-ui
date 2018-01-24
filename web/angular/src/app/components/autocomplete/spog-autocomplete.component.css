@@ -1,0 +1,161 @@
+.auto-search-btn{
+	z-index: 20 !important;
+    right: 11px;
+    position: absolute;
+    height: 28px;
+    width: 27px;
+    top: 11px;
+	color: #0067C5;
+    padding: 0;
+    border: none;
+    background: transparent;
+    vertical-align: middle;
+    outline: none;
+	line-height: 1;
+	cursor:pointer;
+}
+.auto-seach{
+	right: 0px;
+	height: 22px;
+	width: 22px;	
+}
+.select-list{
+	display: block;
+	z-index: 22 !important;
+}
+.hand-symbol{
+	cursor:pointer;	
+}
+.spog-validation {
+	color: #DD3851;
+    font-size: 14px;
+    font-weight: 400;
+	padding-bottom: 7px;
+	padding-left: 3px;
+ }
+ .spog-progress{
+   cursor:progress;
+ }
+
+ @keyframes spinner {
+	to {transform: rotate(360deg);}
+  }
+   
+  .spinner:before {
+	content: '';
+	box-sizing: border-box;
+	position: absolute;
+	top: 50%;
+	right: 7%;
+	width: 23px;
+	height: 23px;
+	margin-top: -10px;
+	margin-left: -10px;
+	border-radius: 50%;
+	border: 2px solid #ccc;
+	border-top-color: #0067c5;
+	animation: spinner .6s linear infinite;
+	z-index: 100;
+	}
+	.search-highlight{   
+    font-weight: bold;
+	}
+	
+	:host ::ng-deep .search-highlight{   
+    font-weight: bold;
+  }
+
+  .spog-checkbox{
+	width: 16px;
+	height: 16px;
+	cursor:pointer;
+	position: absolute;
+	margin-top: 1px;
+  }
+  
+  .c-label{
+	  padding-left: 30px;
+	  cursor:pointer;
+  }
+
+  input[type="checkbox"]:focus{
+		outline:0;
+	}
+	
+	.bug-no-result{
+		text-decoration: none !important;
+		font-weight: 500;
+	}
+
+	/* Customize the label (the container) */
+.cb-container {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.cb-container input {
+  position: absolute;
+  opacity: 0;
+	cursor: pointer;
+	display: none;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+  position: absolute;
+  top: 2px;
+  left: 0;
+  height: 19px;
+  width: 19px;
+  background-color: #eee;
+}
+
+/* On mouse-over, add a grey background color */
+.cb-container:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+.cb-container input:checked ~ .checkmark {
+  background-color: #2196F3;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.cb-container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.cb-container .checkmark:after {
+	left: 7px;
+	top: 2px;
+	width: 6px;
+	height: 13px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+.spog-suggest .n-type-ahead__menu {
+	padding: 8px 12px 12px !important;
+}
+.spog-suggest .n-link-list {
+	margin-bottom: 19px !important;
+}

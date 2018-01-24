@@ -1,0 +1,14 @@
+{
+  "companyname": "company1",
+  "sitedata": {
+    "sitename": "site1",
+    "totalsystems": "425",
+    "autosupportenabled": "300",
+    "systemhealth": {     
+        "legendsubtitle": "ONTAP Systems",
+        "highissues": "9",
+        "mediumissues": "18",
+        "lowissues": "7"      
+    }
+  }
+}
