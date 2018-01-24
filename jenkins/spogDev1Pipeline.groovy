@@ -4,7 +4,7 @@ node('nodejs') {
 
 	def config = [
 	       microservice: "tarun-spog",
-	       version = "1.7"
+	       version = "1.7",
 	       gitRepoUrl: "git@github.com:tarunaz/spog-ui.git",
 	       sourceRepositoryRef: "master",
 	       gitPullSecret: "tarun-spog-master",
