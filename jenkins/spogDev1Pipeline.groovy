@@ -14,7 +14,7 @@ node('nodejs') {
 	
 	stage('Checkout OCP templates') {
 	   echo 'Checkout OpenShift templates'
-	   checkoutOcpTemplates 'git@github.com:tarunaz/pengg-openshift.git'
+	  // checkoutOcpTemplates 'git@github.com:tarunaz/pengg-openshift.git'
 
 	}
 
