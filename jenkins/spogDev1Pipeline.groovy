@@ -1,4 +1,10 @@
-@Library('pengg-openshift-pipelines') _
+@Library('pengg-openshift-pipelines') 
+
+import groovy.transform.Field
+
+@Field final String MICROSERVICE = 'tarun-spog';
+@Field final String GIT_SRC_REPOSITORY_REF = 'master';
+@Field final String OCP_BUILD_NAMESPACE = 'master';
 
 node('nodejs') {
 	
@@ -12,8 +18,8 @@ node('nodejs') {
 	   echo 'Process OpenShift Build templates'
            processOcpBuildTemplates {
 	       gitRepoUrl = "git@github.com:tarunaz/spog-ui.git"
-	       microservice = Constants.MICROSERVICE
-	       sourceRepositoryRef = Constants.GIT_SRC_REPOSITORY_REF
+	       microservice = MICROSERVICE
+	       sourceRepositoryRef = GIT_SRC_REPOSITORY_REF
 	       gitPullSecret = "tarun-spog-master"
 	       buildNamespace = "nss"
 	       deployNamespace ="tarun-spog1"
@@ -27,6 +33,7 @@ node('nodejs') {
 	   echo 'Start OpenShift build'
            startOcpBuild {
 	      namespace = "nss"
+	      buildConfigName = MICROSERVICE + '-' + GIT_SRC_REPOSITORY_REF
 	   }
 	   
 	}
