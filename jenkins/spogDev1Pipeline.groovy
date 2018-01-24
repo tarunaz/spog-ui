@@ -1,6 +1,16 @@
 @Library('pengg-openshift-pipelines') _
 
 node('nodejs') {
+
+	def config = [
+	       gitRepoUrl: "git@github.com:tarunaz/spog-ui.git",
+	       microservice: "tarun-spog",
+	       sourceRepositoryRef: "master",
+	       gitPullSecret: "tarun-spog-master",
+	       buildNamespace: "nss",
+	       deployNamespace: "tarun-spog1",
+	       emailAddress: "test@example.com"
+	]
 	
 	stage('Checkout OCP templates') {
 	   echo 'Checkout OpenShift templates'
@@ -10,15 +20,7 @@ node('nodejs') {
 
 	stage('Process OCP Build templates') {
 	   echo 'Process OpenShift Build templates'
-           processOcpBuildTemplates {
-	       gitRepoUrl = "git@github.com:tarunaz/spog-ui.git"
-	       microservice = "tarun-spog"
-	       sourceRepositoryRef = "master"
-	       gitPullSecret = "tarun-spog-master"
-	       buildNamespace = "nss"
-	       deployNamespace ="tarun-spog1"
-	       emailAddress="test@example.com"
-	   }
+           processOcpBuildTemplates ( config )
 	   
 	}
 
