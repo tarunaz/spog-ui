@@ -1,10 +1,8 @@
-@Library('pengg-openshift-pipelines') 
+@Library('pengg-openshift-pipelines') _
 
-import groovy.transform.Field
-
-@Field final String MICROSERVICE = 'tarun-spog';
-@Field final String GIT_SRC_REPOSITORY_REF = 'master';
-@Field final String OCP_BUILD_NAMESPACE = 'master';
+MICROSERVICE = 'tarun-spog';
+GIT_SRC_REPOSITORY_REF = 'master';
+OCP_BUILD_NAMESPACE = 'master';
 
 node('nodejs') {
 	
