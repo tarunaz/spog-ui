@@ -2,11 +2,11 @@
 
 node('nodejs') {
 	
-	stage('Checkout source') {
+	/*stage('Checkout source') {
 
 	   checkoutSource()
 
-	}
+	}*/
 
 	stage('Start OpenShift build') {
 	   
