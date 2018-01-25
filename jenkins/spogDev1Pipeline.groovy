@@ -2,9 +2,9 @@
 
 node('nodejs') {
 	
-	stage('Checkout OCP templates') {
+	stage('Checkout source') {
 
-	   checkoutOcpTemplates()
+	   checkoutSource()
 
 	}
 
