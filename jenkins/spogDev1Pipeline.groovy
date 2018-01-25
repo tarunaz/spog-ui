@@ -3,9 +3,9 @@
 node('nodejs') {
 
 	def config = [
-	       microservice: "tarun-spog",
+	       microservice: $BASE,
 	       version: "1.7",
-	       gitRepoUrl: "git@github.com:tarunaz/spog-ui.git",
+	       gitRepoUrl: $SOURCE_REPOSITORY_URL,
 	       sourceRepositoryRef: "master",
 	       gitPullSecret: "tarun-spog-master",
 	       buildNamespace: "nss",
