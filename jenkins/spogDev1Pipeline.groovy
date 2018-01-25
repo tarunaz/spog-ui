@@ -14,10 +14,10 @@ node('nodejs') {
 	   
 	}
 
-	stage('Start OpenShift build') {
+	/*stage('Start OpenShift build') {
 	   echo 'Start OpenShift build'
            startOcpBuild()
-	}
+	}*/
 
 	stage('Process OCP Deployment templates') {
 	   echo 'Process OpenShift Deployment templates'
