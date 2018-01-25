@@ -4,40 +4,40 @@ node('nodejs') {
 	
 	stage('Checkout OCP templates') {
 	   echo 'Checkout OpenShift templates'
-	   checkoutOcpTemplates
+	   checkoutOcpTemplates()
 
 	}
 
 	stage('Process OCP Build templates') {
 	   echo 'Process OpenShift Build templates'
-           processOcpBuildTemplates
+           processOcpBuildTemplates()
 	   
 	}
 
 	stage('Start OpenShift build') {
 	   echo 'Start OpenShift build'
-           startOcpBuild
+           startOcpBuild()
 	}
 
 	stage('Process OCP Deployment templates') {
 	   echo 'Process OpenShift Deployment templates'
-           processOcpDeploymentTemplates
+           processOcpDeploymentTemplates()
 	}
 
 	stage('Tag OpenShift Image') {
 	   echo 'Tag OpenShift Image'
-           tagOcpImage
+           tagOcpImage()
 	}
 
 	
 	stage('Import OpenShift Image to TPAAS') {
 	   echo 'Import OpenShift Image to TPAAS'
-           importImageToTpaas
+           importImageToTpaas()
 	}
 
 	stage('Deploy to TPAAS') {
 	   echo 'Deploy to TPAAS'
-           deployToTpaas
+           deployToTpaas()
 	}
 }
 
