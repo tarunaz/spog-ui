@@ -8,12 +8,6 @@ node('nodejs') {
 
 	}
 
-	stage('Process OCP Build templates') {
-	   
-           processOcpBuildTemplates()
-	   
-	}
-
 	stage('Start OpenShift build') {
 	   
            startOcpBuild()
