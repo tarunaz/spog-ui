@@ -13,16 +13,15 @@ node('nodejs') {
            startOcpBuild()
 	}
 
-	stage('Process OCP Deployment templates') {
-	   
-           processOcpDeploymentTemplates()
-	}
-
 	stage('Tag OpenShift Image') {
 	   
            tagOcpImage()
 	}
 
+	stage('Process OCP Deployment templates') {
+	   
+           processOcpDeploymentTemplates()
+	}
 	
 	stage('Import OpenShift Image to TPAAS') {
 	   
